@@ -1,6 +1,7 @@
 type ProjectType = "Web Development" | "Game Development" | "Paper" | "AI" | "Electronics" | "Other";
 
 interface Project {
+    id: string;
     featured: boolean;
     title: string;
     type: ProjectType;
@@ -17,6 +18,7 @@ interface Project {
 
 const projects: Project[] = [
     {
+        id: "elementify",
         featured: true,
         title: "Elementify",
         type: "Web Development",
@@ -30,6 +32,7 @@ const projects: Project[] = [
         technologies: ["HTML", "CSS", "JavaScript", "JSON"]
     },
     {
+        id: "pixel-bounce",
         featured: false,
         title: "Pixel Bounce",
         type: "Game Development",
@@ -43,6 +46,7 @@ const projects: Project[] = [
         technologies: ["C#", "Unity", "Git"]
     },
     {
+        id: "untitled-bubble-game",
         featured: true,
         title: "Untitled Bubble Game",
         type: "Game Development",
@@ -56,6 +60,7 @@ const projects: Project[] = [
         technologies: ["Godot", "GDScript", "Git"]
     },
     {
+        id: "class-manager",
         featured: true,
         title: "Class Manager",
         type: "Web Development",
@@ -69,6 +74,7 @@ const projects: Project[] = [
         technologies: ["HTML", "CSS", "JavaScript", "React", "MongoDB", "Git"]
     },
     {
+        id: "search-filter-extension",
         featured: true,
         title: "Search Filter Extension",
         type: "Web Development",
@@ -82,6 +88,7 @@ const projects: Project[] = [
         technologies: ["JavaScript", "HTML", "CSS", "Git"]
     },
     {
+        id: "beyin-gocu",
         featured: false,
         title: "Beyin Gocu Website",
         type: "Web Development",
@@ -95,6 +102,7 @@ const projects: Project[] = [
         technologies: ["JavaScript", "HTML", "CSS"]
     },
     {
+        id: "pcg-research",
         featured: true,
         title: "Procedural Content Generation Research",
         type: "Paper",
@@ -106,6 +114,7 @@ const projects: Project[] = [
         technologies: ["Unity", "C#", "Python", "matplotlib"]
     },
     {
+        id: "tetris-ai",
         featured: false,
         title: "Tetris Autoplayer AI Bot",
         type: "AI",
@@ -118,6 +127,7 @@ const projects: Project[] = [
         technologies: ["Python", "Pygame", "Reinforcement Learning"]
     },
     {
+        id: "pathfinding-robot",
         featured: false,
         title: "Pathfinding Robot",
         type: "Other",
@@ -130,6 +140,7 @@ const projects: Project[] = [
         technologies: ["C"]
     },
     {
+        id: "bioreactor",
         featured: false,
         title: "Bioreactor Project",
         type: "Electronics",
@@ -140,6 +151,7 @@ const projects: Project[] = [
         technologies: ["C", "Arduino", "ESP32", "Control Systems"]
     },
     {
+        id: "post-it-app",
         featured: false,
         title: "Post It Web App",
         type: "Web Development",
@@ -152,6 +164,7 @@ const projects: Project[] = [
         technologies: ["Java", "Maven", "CVS"]
     },
     {
+        id: "greather",
         featured: false,
         title: "Greather Hackathon Project",
         type: "Web Development",

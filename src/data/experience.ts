@@ -1,4 +1,5 @@
 export interface Experience {
+  id: string;
   title: string;
   company: string;
   period: string;
@@ -10,7 +11,8 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
-    title: "Front-end Web Development Intern",
+  id: "hepsiburada-2023",
+  title: "Front-end Web Development Intern",
     company: "Hepsiburada",
     period: "January 2023 – February 2023",
     dateStarted: new Date(2023, 0),
@@ -19,7 +21,8 @@ export const experiences: Experience[] = [
     type: "Internship"
   },
   {
-    title: "Back-end Web Development Intern",
+  id: "ibtech-2022",
+  title: "Back-end Web Development Intern",
     company: "IBTech International Information and Communication Technologies (QNB Finansbank)",
     period: "August 2022",
     dateStarted: new Date(2022, 0),

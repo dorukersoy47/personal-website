@@ -1,4 +1,5 @@
 interface Skill {
+  id: string;
   name: string;
   level: number;
   iconName: string; 
@@ -13,46 +14,46 @@ const skills: SkillCategory[] = [
   {
     category: "Languages",
     skills: [
-      { name: "C", level: 7, iconName: "SiC" },
-      { name: "Python", level: 7, iconName: "SiPython" },
-      { name: "Java", level: 5, iconName: "FaJava" },
-      { name: "C#", level: 2, iconName: "PiFileCSharp" },
-      { name: "GD Script", level: 3, iconName: "SiGodotengine" },
-      { name: "Haskell", level: 6, iconName: "SiHaskell" },
-      { name: "JavaScript", level: 4, iconName: "SiJavascript" },
-      { name: "TypeScript", level: 4, iconName: "SiTypescript" },
-      { name: "HTML", level: 6, iconName: "SiHtml5" },
-      { name: "CSS/Tailwind", level: 6, iconName: "SiTailwindcss" }
+      { id: "c", name: "C", level: 7, iconName: "SiC" },
+      { id: "python", name: "Python", level: 7, iconName: "SiPython" },
+      { id: "java", name: "Java", level: 5, iconName: "FaJava" },
+      { id: "csharp", name: "C#", level: 2, iconName: "PiFileCSharp" },
+      { id: "gdscript", name: "GD Script", level: 3, iconName: "SiGodotengine" },
+      { id: "haskell", name: "Haskell", level: 6, iconName: "SiHaskell" },
+      { id: "javascript", name: "JavaScript", level: 4, iconName: "SiJavascript" },
+      { id: "typescript", name: "TypeScript", level: 4, iconName: "SiTypescript" },
+      { id: "html", name: "HTML", level: 6, iconName: "SiHtml5" },
+      { id: "css-tailwind", name: "CSS/Tailwind", level: 6, iconName: "SiTailwindcss" }
     ]
   },
   {
     category: "Frameworks",
     skills: [
-      { name: "React", level: 6, iconName: "SiReact" },
-      { name: "Node.js", level: 6, iconName: "SiNodedotjs" },
-      { name: "Next.js", level: 4, iconName: "SiNextdotjs" },
-      { name: "Unity", level: 3, iconName: "SiUnity" },
-      { name: "Godot", level: 4, iconName: "SiGodotengine" }
+      { id: "react", name: "React", level: 6, iconName: "SiReact" },
+      { id: "nodejs", name: "Node.js", level: 6, iconName: "SiNodedotjs" },
+      { id: "nextjs", name: "Next.js", level: 4, iconName: "SiNextdotjs" },
+      { id: "unity", name: "Unity", level: 3, iconName: "SiUnity" },
+      { id: "godot", name: "Godot", level: 4, iconName: "SiGodotengine" }
     ]
   },
   {
     category: "Tools",
     skills: [
-      { name: "Git", level: 8, iconName: "SiGit" },
-      { name: "MongoDB", level: 3, iconName: "SiMongodb" },
-      { name: "Visual Studio", level: 5, iconName: "BiLogoVisualStudio" },
-      { name: "Figma", level: 3, iconName: "FaFigma" },
-      { name: "Canva", level: 7, iconName: "SiCanva" }
+      { id: "git", name: "Git", level: 8, iconName: "SiGit" },
+      { id: "mongodb", name: "MongoDB", level: 3, iconName: "SiMongodb" },
+      { id: "visualstudio", name: "Visual Studio", level: 5, iconName: "BiLogoVisualStudio" },
+      { id: "figma", name: "Figma", level: 3, iconName: "FaFigma" },
+      { id: "canva", name: "Canva", level: 7, iconName: "SiCanva" }
     ]
   },
   {
     category: "Learning",
     skills: [
-      { name: "Unreal Engine", level: 0, iconName: "SiUnrealengine" },
-      { name: "C++", level: 0, iconName: "SiCplusplus" },
-      { name: "Artificial Intelligence", level: 0, iconName: "GiArtificialIntelligence" },
-      { name: "Machine Learning", level: 0, iconName: "GiArtificialHive" },
-      { name: "Rust", level: 0, iconName: "FaRust" }
+      { id: "unrealengine", name: "Unreal Engine", level: 0, iconName: "SiUnrealengine" },
+      { id: "cplusplus", name: "C++", level: 0, iconName: "SiCplusplus" },
+      { id: "ai", name: "Artificial Intelligence", level: 0, iconName: "GiArtificialIntelligence" },
+      { id: "ml", name: "Machine Learning", level: 0, iconName: "GiArtificialHive" },
+      { id: "rust", name: "Rust", level: 0, iconName: "FaRust" }
     ]
   }
 ];

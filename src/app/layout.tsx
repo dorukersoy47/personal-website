@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
+"use client";
+
 import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'], display: 'swap' });
+import Header from "../components/Header";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import BackToTop from "@/components/BackToTop";
-import { ThemeProvider } from "@/contexts/ThemeContext";
+import React, { useEffect } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,29 +18,26 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Doruk Ersoy - Full Stack Developer",
-  description: "Personal portfolio website of Doruk Ersoy, a Full Stack Developer passionate about creating beautiful and functional web experiences.",
-};
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  useEffect(() => {
+    const root = document.documentElement;
+    const deepPurple = getComputedStyle(root).getPropertyValue('--deep-purple').trim();
+    const purple = getComputedStyle(root).getPropertyValue('--purple').trim();
+    const lightPurple = getComputedStyle(root).getPropertyValue('--light-purple').trim();
+    const accent = getComputedStyle(root).getPropertyValue('--accent').trim();
+
+    document.body.style.background = `repeating-linear-gradient(180deg, ${deepPurple} 0vh, ${purple} 50vh, ${lightPurple} 100vh, ${accent} 150vh, ${lightPurple} 200vh, ${purple} 250vh, ${deepPurple} 299vh, ${deepPurple} 300vh)`;
+  }, []);
+
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}
-      >
-        <ThemeProvider>
-          <Header />
-          <main className="pt-20">
-            {children}
-          </main>
-          <Footer />
-          <BackToTop />
-        </ThemeProvider>
+    <html lang="en" className={inter.className}>
+      <body className="bg-gradient-to-b from-dark-gray to-black min-h-screen">
+        <Header />
+        {children}
       </body>
     </html>
   );

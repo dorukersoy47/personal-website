@@ -1,16 +1,9 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
 
-interface Experience {
-  id: number;
-  title: string;
-  company: string;
-  period: string;
-  description: string;
-  technologies: string[];
-  type: string;
-}
+import { useEffect, useState, useRef } from 'react';
+import { experiences } from "../data/experience";
+import type { Experience } from "../data/experience";
 
 export default function Experience() {
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -33,26 +26,7 @@ export default function Experience() {
     return () => observer.disconnect();
   }, []);
 
-  const experiences: Experience[] = [
-    {
-      id: 1,
-      title: "Front-end Web Development Intern",
-      company: "Hepsiburada",
-      period: "January 2023 – February 2023",
-      description: "At Hepsiburada, I developed the Elementify website using Vanilla JavaScript, HTML, and CSS, and expanded my skills with Node.js and React by building a to-do app. I also contributed to discussions on localization and package size optimization.",
-      technologies: ["JavaScript", "HTML", "CSS", "Node.js", "React"],
-      type: "Internship"
-    },
-    {
-      id: 2,
-      title: "Back-end Web Development Intern",
-      company: "IBTech International Information and Communication Technologies (QNB Finansbank)",
-      period: "August 2022",
-      description: "During my time at IBTech, I analyzed QNB Finansbank's applications to learn about server architecture and quality assurance, and designed a basic MVC website using Visual Studio to understand application structure.",
-      technologies: ["MVC", "Visual Studio", "Quality Assurance", "Server Architecture"],
-      type: "Internship"
-    }
-  ];
+  // ...existing code...
 
   return (
     <section id="experience" ref={sectionRef} className="py-20 bg-gradient-to-br from-dark-gray via-deep-purple to-purple relative overflow-hidden">

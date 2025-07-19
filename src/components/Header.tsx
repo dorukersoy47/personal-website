@@ -1,138 +1,71 @@
-'use client';
-
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { useTheme } from '@/contexts/ThemeContext';
-import * as React from "react";
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const { isDarkMode, toggleTheme } = useTheme();
-
-  const toggleMenu = (): void => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const scrollToSection = (sectionId: string): void => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMenuOpen(false);
-  };
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-dark-gray via-deep-purple to-purple backdrop-blur-md border-b border-purple/20 transition-all duration-300">
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Menu Button */}
+    <header className="fixed top-0 left-0 w-full z-50">
+      <div className="relative flex items-center justify-center px-4 py-3 shadow-md border-b-2 border-black" style={{ background: 'linear-gradient(180deg, #0d031a, #1a0b2e, #0f0f0f)' }}>
         <button
-          onClick={toggleMenu}
-          className="relative z-50 p-2 rounded-lg bg-gray/20 border border-purple/30 hover:border-light-purple/50 transition-all duration-300 group"
+          className="text-light-purple hover:text-accent focus:outline-none transition-colors duration-200 absolute left-4 top-1/2 -translate-y-1/2 z-[100]"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          style={{ pointerEvents: 'auto' }}
         >
-          <div className="w-6 h-6 flex flex-col justify-center items-center">
-            <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-1' : ''}`}></span>
-            <span className={`block w-5 h-0.5 bg-white transition-all duration-300 mt-1 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`block w-5 h-0.5 bg-white transition-all duration-300 mt-1 ${isMenuOpen ? '-rotate-45 -translate-y-1' : ''}`}></span>
-          </div>
-        </button>
-
-        {/* Logo/Name */}
-        <div className="absolute left-1/2 transform -translate-x-1/2">
-          <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-light-purple to-accent bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
-            Doruk Ersoy
-          </Link>
-        </div>
-
-        {/* Theme Toggle */}
-        <button
-          onClick={toggleTheme}
-          className="p-2 rounded-lg bg-gray/20 border border-purple/30 hover:border-light-purple/50 transition-all duration-300"
-        >
-          {isDarkMode ? (
-            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m6.01-6.01l.707-.707m12.728 12.728l.707.707M6.01 6.01l-.707-.707m12.728-12.728l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-            </svg>
+          {isOpen ? (
+            // Close icon
+            <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" style={{ pointerEvents: 'auto' }}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
           ) : (
-            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-            </svg>
+            // Hamburger icon
+            <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
           )}
         </button>
-
-        {/* Navigation Menu */}
-        <div className={`fixed top-0 left-0 h-full w-80 bg-gray/95 backdrop-blur-md border-r border-purple/30 transform transition-transform duration-300 ease-out ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-          <div className="p-8 pt-24">
-            <nav className="space-y-6">
-              <button
-                onClick={() => scrollToSection('hero')}
-                className="block w-full text-left text-lg font-semibold text-white hover:text-light-purple transition-colors duration-300 py-3 px-4 rounded-lg hover:bg-purple/20"
-              >
-                Home
-              </button>
-              <button
-                onClick={() => scrollToSection('about')}
-                className="block w-full text-left text-lg font-semibold text-white hover:text-light-purple transition-colors duration-300 py-3 px-4 rounded-lg hover:bg-purple/20"
-              >
-                About
-              </button>
-              <button
-                onClick={() => scrollToSection('experience')}
-                className="block w-full text-left text-lg font-semibold text-white hover:text-light-purple transition-colors duration-300 py-3 px-4 rounded-lg hover:bg-purple/20"
-              >
-                Experience
-              </button>
-              <button
-                onClick={() => scrollToSection('projects')}
-                className="block w-full text-left text-lg font-semibold text-white hover:text-light-purple transition-colors duration-300 py-3 px-4 rounded-lg hover:bg-purple/20"
-              >
-                Projects
-              </button>
-              <button
-                onClick={() => scrollToSection('skills')}
-                className="block w-full text-left text-lg font-semibold text-white hover:text-light-purple transition-colors duration-300 py-3 px-4 rounded-lg hover:bg-purple/20"
-              >
-                Skills
-              </button>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="block w-full text-left text-lg font-semibold text-white hover:text-light-purple transition-colors duration-300 py-3 px-4 rounded-lg hover:bg-purple/20"
-              >
-                Contact
-              </button>
-            </nav>
-
-            {/* Individual Page Links */}
-            <div className="mt-12 pt-8 border-t border-purple/30">
-              <h3 className="text-sm font-semibold text-gray-400 mb-4">Individual Pages</h3>
-              <div className="space-y-3">
-                <Link href="/about" className="block text-sm text-white hover:text-light-purple transition-colors duration-300">
-                  About Page
-                </Link>
-                <Link href="/experience" className="block text-sm text-white hover:text-light-purple transition-colors duration-300">
-                  Experience Page
-                </Link>
-                <Link href="/projects" className="block text-sm text-white hover:text-light-purple transition-colors duration-300">
-                  Projects Page
-                </Link>
-                <Link href="/skills" className="block text-sm text-white hover:text-light-purple transition-colors duration-300">
-                  Skills Page
-                </Link>
-                <Link href="/contact" className="block text-sm text-white hover:text-light-purple transition-colors duration-300">
-                  Contact Page
-                </Link>
-              </div>
-            </div>
-          </div>
+        <div className="mx-auto">
+          <Link href="/">
+            <span className="text-xl font-bold text-light-purple tracking-wide select-none hover:text-accent transition-colors cursor-pointer">Doruk Ersoy</span>
+          </Link>
         </div>
-
-        {/* Overlay */}
-        {isMenuOpen && (
-          <div
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-            onClick={() => setIsMenuOpen(false)}
-          ></div>
-        )}
+        <div className="flex items-center gap-3 absolute right-4 top-1/2 -translate-y-1/2">
+          <a href="/Resume-Doruk%20Ersoy.pdf" download className="text-light-purple hover:text-accent transition-colors" aria-label="Download Resume" title="Download Resume">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M13 9L15 15L17 9M10 15C9.06812 15 8.60218 15 8.23463 14.8478C7.74458 14.6448 7.35523 14.2554 7.15224 13.7654C7 13.3978 7 12.9319 7 12C7 11.0681 7 10.6022 7.15224 10.2346C7.35523 9.74458 7.74458 9.35523 8.23463 9.15224C8.60218 9 9.06812 9 10 9M7.2 20H16.8C17.9201 20 18.4802 20 18.908 19.782C19.2843 19.5903 19.5903 19.2843 19.782 18.908C20 18.4802 20 17.9201 20 16.8V7.2C20 6.0799 20 5.51984 19.782 5.09202C19.5903 4.71569 19.2843 4.40973 18.908 4.21799C18.4802 4 17.9201 4 16.8 4H7.2C6.0799 4 5.51984 4 5.09202 4.21799C4.71569 4.40973 4.40973 4.71569 4.21799 5.09202C4 5.51984 4 6.07989 4 7.2V16.8C4 17.9201 4 18.4802 4.21799 18.908C4.40973 19.2843 4.71569 19.5903 5.09202 19.782C5.51984 20 6.07989 20 7.2 20Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </a>
+          <a href="https://github.com/dorukersoy47" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-light-purple hover:text-accent transition-colors">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.339-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.987 1.029-2.686-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.699 1.028 1.593 1.028 2.686 0 3.847-2.338 4.695-4.566 4.944.36.31.68.921.68 1.857 0 1.34-.012 2.421-.012 2.751 0 .267.18.577.688.48C19.138 20.2 22 16.447 22 12.021 22 6.484 17.523 2 12 2z"/></svg>
+          </a>
+          <a href="https://linkedin.com/in/doruk-ersoy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-light-purple hover:text-accent transition-colors">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.604c0-1.337-.025-3.063-1.868-3.063-1.868 0-2.154 1.459-2.154 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.563 2.841-1.563 3.039 0 3.6 2.001 3.6 4.601v5.595z"/></svg>
+          </a>
+          <a href="https://instagram.com/doruk_ersoy" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-light-purple hover:text-accent transition-colors">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3.25a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5zm5.13.62a1.13 1.13 0 1 1-2.26 0 1.13 1.13 0 0 1 2.26 0z"/></svg>
+          </a>
+        </div>
       </div>
+
+      {/* Sidebar Overlay */}
+      <div
+        className={`fixed inset-0 z-40 bg-black/60 transition-opacity duration-300 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        onClick={() => setIsOpen(false)}
+        aria-hidden={!isOpen}
+      />
+
+      {/* Sidebar */}
+      <nav
+        className={`fixed top-0 left-0 h-full w-64 shadow-lg z-50 transform transition-transform duration-300 border-r-2 border-black ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
+        style={{ background: 'linear-gradient(90deg, #0d031a, #1a0b2e, #0f0f0f)' }}
+        aria-label="Main navigation"
+      >
+        <ul className="flex flex-col gap-4 mt-20 px-6 text-lg text-light-purple">
+          <li><a href='/' onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Home</a></li>
+          <li><a href="/about" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">About Me</a></li>
+          <li><a href="/education" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Education</a></li>
+          <li><a href="/extracurricular" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Extracurricular</a></li>
+          <li><a href="/projects" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Projects</a></li>
+          <li><a href="/experience" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Experience</a></li>
+          <li><a href="/skills" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Skills</a></li>
+          <li><a href="/contact" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Contact</a></li>
+        </ul>
+      </nav>
     </header>
   );
-} 
+}

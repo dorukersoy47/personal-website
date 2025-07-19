@@ -306,6 +306,39 @@ export default function Main() {
           </button>
         </div>
       </section>
+
+      {/* Contact Me */}
+      <section className="w-full flex flex-col items-center justify-center py-24">
+        <motion.h2
+          className="text-4xl md:text-5xl font-bold text-light-purple text-center mb-6 mt-30"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: 'easeOut' }}
+          viewport={{ once: true, amount: 0.7 }}
+        >
+          Let's Contact?
+        </motion.h2>
+        <motion.p
+          className="text-xl md:text-2xl text-gray-200 text-center max-w-2xl mb-8"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: 'easeOut', delay: 0.2 }}
+          viewport={{ once: true, amount: 0.7 }}
+        >
+          Want to get in touch? Whether it's for a project, a chat, or just to say hi, I'd love to talk!
+        </motion.p>
+        <div className="flex justify-center">
+          <button
+            className=" mb-25 px-8 py-4 bg-light-purple text-dark-gray font-bold rounded-lg shadow hover:bg-accent transition-colors border-2 border-white text-lg flex items-center gap-3"
+            onClick={() => window.location.href = '/contact'}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 8V6a2 2 0 00-2-2H5a2 2 0 00-2 2v2m18 0v10a2 2 0 01-2 2H5a2 2 0 01-2-2V8m18 0l-9 6-9-6" />
+            </svg>
+            Contact Me
+          </button>
+        </div>
+      </section>
     </main>
   );
 }

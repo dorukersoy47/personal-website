@@ -63,7 +63,7 @@ export default function Header() {
           <li><a href="/projects" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Projects</a></li>
           <li><a href="/experience" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Experience</a></li>
           <li><a href="/skills" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Skills</a></li>
-          <li><a href="/contact" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Contact</a></li>
+          <li><a href="/contact" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Contact Me</a></li>
         </ul>
       </nav>
     </header>

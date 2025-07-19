@@ -1,28 +1,33 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { skills } from "../data/skills";
+import { skills as skillCategories } from "../data/skills";
+import * as FaIcons from "react-icons/fa";
+import * as SiIcons from "react-icons/si";
+import * as PiIcons from "react-icons/pi";
+import * as BiIcons from "react-icons/bi";
+import * as GiIcons from "react-icons/gi";
 
-function getSkillIconAndLabel(skill: any) {
-  if (typeof skill === "object" && skill && "icon" in skill && "name" in skill) {
-    return { icon: skill.icon, label: skill.name };
-  }
-  return { icon: null, label: typeof skill === "string" ? skill : String(skill) };
-}
+const fa = FaIcons as Record<string, any>;
+const si = SiIcons as Record<string, any>;
+const pi = PiIcons as Record<string, any>;
+const bi = BiIcons as Record<string, any>;
+const gi = GiIcons as Record<string, any>;
 
-const duration = 18;
+const duration = 75;
 
 export default function SkillsMarquee() {
-  const shuffled = useMemo(() => {
-    const arr = [...skills];
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
+  // Flatten all skills from all categories except 'Learning' into a single array
+  const allSkills = useMemo(() => {
+    return skillCategories
+      .filter(cat => cat.category !== "Learning")
+      .flatMap(cat => cat.skills);
   }, []);
 
-  const half = Math.ceil(shuffled.length / 2);
-  const lines = [shuffled.slice(0, half), shuffled.slice(half)];
+
+
+  // No shuffle: use original order for SSR/hydration safety
+  const half = Math.ceil(allSkills.length / 2);
+  const lines = [allSkills.slice(0, half), allSkills.slice(half)];
 
   const lineVariants = (dir: "left" | "right") => ({
     animate: {
@@ -58,21 +63,28 @@ export default function SkillsMarquee() {
             style={{ width: "max-content" }}
           >
             {[...lines[i], ...lines[i]].map((skill, idx) => {
-              const { icon, label } = getSkillIconAndLabel(skill);
+              // All skills are Skill objects with name and iconName
+              const label = skill.name;
+              // For icon, you may want to use a dynamic icon component, but fallback to iconName as alt text
               return (
                 <span
                   key={idx}
                   className="inline-flex items-center gap-2 px-4 py-1 rounded bg-dark-gray/60 border border-light-purple/30 mx-1"
                 >
-                  {icon && (
-                    <span className="w-6 h-6 flex items-center justify-center">
-                      {typeof icon === "string" ? (
-                        <img src={icon} alt={label} className="w-6 h-6 object-contain" />
-                      ) : (
-                        icon
-                      )}
-                    </span>
-                  )}
+                  <span className="w-6 h-6 flex items-center justify-center">
+                    {(() => {
+                      const iconName = skill.iconName;
+                      const iconComponent =
+                        fa[iconName] ||
+                        si[iconName] ||
+                        pi[iconName] ||
+                        bi[iconName] ||
+                        gi[iconName];
+                      return iconComponent
+                        ? React.createElement(iconComponent, { className: "w-6 h-6" })
+                        : null;
+                    })()}
+                  </span>
                   <span>{label}</span>
                 </span>
               );

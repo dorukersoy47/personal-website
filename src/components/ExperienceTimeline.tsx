@@ -5,19 +5,14 @@ import { experiences } from "../data/experience";
 const isTop = (idx: number) => idx % 2 === 0;
 
 export default function ExperienceTimeline() {
-  // Sort experiences oldest to newest (by dateStarted)
   const sorted = [...experiences].sort((a, b) => a.dateStarted.getTime() - b.dateStarted.getTime());
   const n = sorted.length;
-  // Calculate top positions: first at 0vh, last at 80vh, others distributed
-  // Place first dot at 10%, last at 90%, others evenly between
-  // Use percent of container height (65vh) for dot positions
   const containerHeight = 65; // in vh
   const getTop = (idx: number) => {
     if (n === 1) return `calc(${containerHeight * 0.10}vh - 1vw)`;
     if (n === 2) return idx === 0
       ? `calc(${containerHeight * 0.20}vh - 1vw)`
       : `calc(${containerHeight * 0.70}vh - 1vw)`;
-    // For n > 2, spread from 10% to 90% of container height
     const percent = 0.10 + ((idx / (n - 1)) * 0.80);
     return `calc(${(containerHeight * percent)}vh - 1vw)`;
   };

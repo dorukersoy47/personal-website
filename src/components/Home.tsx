@@ -294,9 +294,15 @@ export default function Main() {
         >
           Languages, frameworks, tools...
         </motion.p>
-        <div className="flex flex-col items-center w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="flex flex-col items-center w-full"
+        >
           <SkillsMarquee />
-        </div>
+        </motion.div>
         <div className="flex justify-center w-full">
           <button
             className="mb-30 mt-8 px-8 py-3 bg-light-purple text-dark-gray font-bold rounded-lg shadow hover:bg-accent transition-colors border-2 border-white text-lg"

@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import { skills as skillCategories } from "../data/skills";
 import * as FaIcons from "react-icons/fa";
@@ -7,11 +7,12 @@ import * as PiIcons from "react-icons/pi";
 import * as BiIcons from "react-icons/bi";
 import * as GiIcons from "react-icons/gi";
 
-const fa = FaIcons as Record<string, any>;
-const si = SiIcons as Record<string, any>;
-const pi = PiIcons as Record<string, any>;
-const bi = BiIcons as Record<string, any>;
-const gi = GiIcons as Record<string, any>;
+type IconModule = { [key: string]: React.ComponentType<unknown> };
+const fa = FaIcons as IconModule;
+const si = SiIcons as IconModule;
+const pi = PiIcons as IconModule;
+const bi = BiIcons as IconModule;
+const gi = GiIcons as IconModule;
 
 const duration = 75;
 
@@ -81,7 +82,7 @@ export default function SkillsMarquee() {
                         bi[iconName] ||
                         gi[iconName];
                       return iconComponent
-                        ? React.createElement(iconComponent, { className: "w-6 h-6" })
+                        ? React.createElement(iconComponent as React.ComponentType<{ className?: string }>, { className: "w-6 h-6" })
                         : null;
                     })()}
                   </span>

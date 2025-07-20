@@ -56,16 +56,17 @@ export default function Header() {
         aria-label="Main navigation"
       >
         <ul className="flex flex-col gap-4 mt-20 px-6 text-lg text-light-purple">
-          <li><a href='/' onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Home</a></li>
-          <li><a href="/about" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">About Me</a></li>
-          <li><a href="/education" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Education</a></li>
-          <li><a href="/extracurricular" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Extracurricular</a></li>
-          <li><a href="/projects" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Projects</a></li>
-          <li><a href="/experience" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Experience</a></li>
-          <li><a href="/skills" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Skills</a></li>
-          <li><a href="/contact" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Contact Me</a></li>
+          <li><Link href='/' onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Home</Link></li>
+          <li><Link href="/about" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">About Me</Link></li>
+          <li><Link href="/education" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Education</Link></li>
+          <li><Link href="/extracurricular" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Extracurricular</Link></li>
+          <li><Link href="/projects" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Projects</Link></li>
+          <li><Link href="/experience" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Experience</Link></li>
+          <li><Link href="/skills" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Skills</Link></li>
+          <li><Link href="/contact" onClick={() => setIsOpen(false)} className="hover:text-accent transition-colors">Contact Me</Link></li>
         </ul>
       </nav>
     </header>
   );
 }
+ 

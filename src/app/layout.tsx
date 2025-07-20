@@ -1,22 +1,11 @@
 "use client";
 
-import { Geist, Geist_Mono } from "next/font/google";
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 import Header from "../components/Header";
 import "./globals.css";
 import React, { useEffect } from "react";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export default function RootLayout({
   children,

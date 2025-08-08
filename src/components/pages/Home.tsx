@@ -2,10 +2,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { projects } from "../data/projects";
-import SkillsMarquee from "./SkillsMarquee";
-import ExperienceTimeline from "./ExperienceTimeline";
-import ProjectBlock from "./ProjectBlock";
+import { projects } from "../../data/projects";
+import SkillsMarquee from "../ui/SkillsMarquee";
+import ExperienceTimeline from "../ui/ExperienceTimeline";
+import ProjectBlock from "../ui/ProjectBlock";
 
 const featuredProjects = projects.filter(project => project.featured);
 

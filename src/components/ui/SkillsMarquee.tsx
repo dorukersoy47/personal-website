@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { motion } from "framer-motion";
-import { skills as skillCategories } from "../data/skills";
+import { skills as skillCategories } from "../../data/skills";
 import * as FaIcons from "react-icons/fa";
 import * as SiIcons from "react-icons/si";
 import * as PiIcons from "react-icons/pi";

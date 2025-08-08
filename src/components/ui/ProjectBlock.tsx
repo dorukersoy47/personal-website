@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import type { Project } from "../data/projects";
+import type { Project } from "../../data/projects";
 
 interface ProjectBlockProps {
   project: Project;

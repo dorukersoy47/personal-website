@@ -14,7 +14,7 @@ const pi = PiIcons as IconModule;
 const bi = BiIcons as IconModule;
 const gi = GiIcons as IconModule;
 
-const duration = 75;
+const duration = 40;
 
 export default function SkillsMarquee() {
   // Flatten all skills from all categories except 'Learning' into a single array
@@ -37,7 +37,7 @@ export default function SkillsMarquee() {
         repeat: Infinity,
         repeatType: "loop" as const,
         duration,
-        ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number],
+        ease: "linear" as const,
       },
     },
   });
@@ -61,7 +61,11 @@ export default function SkillsMarquee() {
             className="flex flex-nowrap gap-6 text-lg md:text-xl font-semibold text-light-purple whitespace-nowrap items-center justify-center"
             variants={lineVariants(i === 0 ? "left" : "right")}
             animate="animate"
-            style={{ width: "max-content" }}
+            style={{ 
+              width: "max-content",
+              willChange: "transform",
+              transform: "translate3d(0, 0, 0)"
+            }}
           >
             {[...lines[i], ...lines[i]].map((skill, idx) => {
               // All skills are Skill objects with name and iconName

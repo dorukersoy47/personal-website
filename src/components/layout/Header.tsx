@@ -27,7 +27,7 @@ export default function Header() {
           </Link>
         </div>
         <div className="flex items-center gap-3 absolute right-4 top-1/2 -translate-y-1/2">
-          <a href="/Resume-Doruk%20Ersoy.pdf" download className="text-light-purple hover:text-accent transition-colors" aria-label="Download Resume" title="Download Resume">
+          <a href="/documents/Resume-Doruk%20Ersoy.pdf" download className="text-light-purple hover:text-accent transition-colors" aria-label="Download Resume" title="Download Resume">
             <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M13 9L15 15L17 9M10 15C9.06812 15 8.60218 15 8.23463 14.8478C7.74458 14.6448 7.35523 14.2554 7.15224 13.7654C7 13.3978 7 12.9319 7 12C7 11.0681 7 10.6022 7.15224 10.2346C7.35523 9.74458 7.74458 9.35523 8.23463 9.15224C8.60218 9 9.06812 9 10 9M7.2 20H16.8C17.9201 20 18.4802 20 18.908 19.782C19.2843 19.5903 19.5903 19.2843 19.782 18.908C20 18.4802 20 17.9201 20 16.8V7.2C20 6.0799 20 5.51984 19.782 5.09202C19.5903 4.71569 19.2843 4.40973 18.908 4.21799C18.4802 4 17.9201 4 16.8 4H7.2C6.0799 4 5.51984 4 5.09202 4.21799C4.71569 4.40973 4.40973 4.71569 4.21799 5.09202C4 5.51984 4 6.07989 4 7.2V16.8C4 17.9201 4 18.4802 4.21799 18.908C4.40973 19.2843 4.71569 19.5903 5.09202 19.782C5.51984 20 6.07989 20 7.2 20Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </a>
           <a href="https://github.com/dorukersoy47" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-light-purple hover:text-accent transition-colors">

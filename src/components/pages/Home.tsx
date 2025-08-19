@@ -24,7 +24,7 @@ export default function Main() {
                         Hiya!
                     </motion.h1>
                     <motion.p
-                        className="text-3xl md:text-4xl font-semibold text-light-purple text-center min-h-[3.5rem] mt-12"
+                        className="text-3xl md:text-4xl font-semibold text-light-purple text-center min-h-14 mt-12"
                         initial={{ opacity: 0, y: 60 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1.5, ease: 'easeOut' }}
@@ -33,7 +33,7 @@ export default function Main() {
                         I&apos;m Doruk
                     </motion.p>
                     <motion.p
-                        className="text-xl md:text-2xl text-gray-200 text-center max-w-xl min-h-[2.5rem]"
+                        className="text-xl md:text-2xl text-gray-200 text-center max-w-xl min-h-10"
                         initial={{ opacity: 0, y: 60 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1.6, ease: 'easeOut' }}
@@ -205,7 +205,7 @@ export default function Main() {
                                 className="flex items-center justify-center w-full h-full"
                             >
                                 <button
-                                    className="flex flex-col items-center justify-center bg-gradient-to-br from-dark-gray to-light-purple/20 rounded-full border-2 border-dashed border-light-purple text-light-purple shadow-lg min-h-[180px] min-w-[180px] max-h-[220px] max-w-[220px] p-0 hover:scale-110 transition-transform cursor-pointer"
+                                    className="flex flex-col items-center justify-center bg-linear-to-br from-dark-gray to-light-purple/20 rounded-full border-2 border-dashed border-light-purple text-light-purple shadow-lg min-h-[180px] min-w-[180px] max-h-[220px] max-w-[220px] p-0 hover:scale-110 transition-transform cursor-pointer"
                                     style={{ aspectRatio: '1/1' }}
                                     onClick={() => window.location.href = '/projects'}
                                     aria-label="See all projects"

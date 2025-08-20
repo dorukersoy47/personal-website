@@ -9,11 +9,21 @@ import ProjectBlock from "../ui/ProjectBlock";
 
 const featuredProjects = projects.filter(project => project.featured);
 
+/**
+ * NOTE:
+ * Added symmetric horizontal padding to most sections:
+ *   base: px-4
+ *   sm:   px-6
+ *   md:   px-20
+ *   lg:   px-28
+ * This keeps clear space around the hamburger region on the left AND mirrors it on the right.
+ * The Skills section intentionally keeps its original spacing.
+ */
 export default function Main() {
     return (
         <main className="min-h-screen flex flex-col items-center justify-center bg-transparent">
             {/* Introduction */}
-            <section className="w-full flex flex-col items-center justify-center min-h-screen">
+            <section className="w-full flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 md:px-20 lg:px-28">
                 <div className="flex flex-col items-center justify-center min-h-screen w-full">
                     <motion.h1
                         className="text-7xl md:text-8xl font-extrabold text-center text-light-purple drop-shadow-lg"
@@ -43,9 +53,10 @@ export default function Main() {
                     </motion.p>
                 </div>
             </section>
+
             {/* About Me */}
             <div className="h-[40vh]" />
-            <section className="w-full flex flex-col items-center justify-center gap-8">
+            <section className="w-full flex flex-col items-center justify-center gap-8 px-4 sm:px-6 md:px-20 lg:px-28">
                 <motion.h2
                     className="text-4xl md:text-5xl font-bold text-light-purple text-center mb-6"
                     initial={{ opacity: 0, x: -100 }}
@@ -56,7 +67,7 @@ export default function Main() {
                     Who is this bloke?
                 </motion.h2>
                 <motion.p
-                    className="text-2xl text-gray-200 text-center max-w-2xl mb-2"
+                    className="text-3xl text-gray-200 text-center max-w-2xl mb-2"
                     initial={{ opacity: 0, x: 100 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1.2, ease: 'easeOut', delay: 0.3 }}
@@ -65,8 +76,17 @@ export default function Main() {
                     I am a <b>Turkish</b> guy who is studying <b>computer science</b> in <b>University College London (UCL)</b> and living in <b>London</b>.
                 </motion.p>
                 <motion.p
-                    className="text-xl text-gray-200 text-center max-w-2xl mb-8"
+                    className="text-2xl text-gray-200 text-center max-w-2xl mb-2"
                     initial={{ opacity: 0, x: -100 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1.2, ease: 'easeOut', delay: 0.3 }}
+                    viewport={{ once: true, amount: 0.7 }}
+                >
+                    I am a <b>Software/AI Engineer</b> and <b>Game Developer</b> wanna-be.
+                </motion.p>
+                <motion.p
+                    className="text-xl text-gray-200 text-center max-w-2xl mb-8"
+                    initial={{ opacity: 0, x: 100 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1.2, ease: 'easeOut', delay: 0.6 }}
                     viewport={{ once: true, amount: 0.7 }}
@@ -106,7 +126,7 @@ export default function Main() {
                         transition={{ duration: 0.7, ease: 'easeOut', delay: 0.8 }}
                         viewport={{ once: true, amount: 0.7 }}
                     >
-                        <span className="text-lg text-light-purple mb-4 text-center">See how I ended up here.</span>
+                        <span className="text-lg text-light-purple mb-4 text-center">The boring stuff I had to do to get here.</span>
                         <Link href="/education" className="mt-auto">
                             <button className="bg-light-purple text-dark-gray font-bold px-6 py-2 rounded-lg shadow hover:bg-accent transition-colors border-2 border-white">My Education</button>
                         </Link>
@@ -120,7 +140,7 @@ export default function Main() {
                         transition={{ duration: 0.7, ease: 'easeOut', delay: 1.0 }}
                         viewport={{ once: true, amount: 0.7 }}
                     >
-                        <span className="text-lg text-light-purple mb-4 text-center">I like sports, video games, etc.</span>
+                        <span className="text-lg text-light-purple mb-4 text-center">Things I do when I am not coding.</span>
                         <Link href="/extracurricular" className="mt-auto">
                             <button className="bg-light-purple text-dark-gray font-bold px-6 py-2 rounded-lg shadow hover:bg-accent transition-colors border-2 border-white">Extracurriculars</button>
                         </Link>
@@ -130,7 +150,7 @@ export default function Main() {
 
             {/* Work & Projects Intro Section */}
             <div className="h-[15vh] md:h-[65vh]" />
-            <section className="w-full flex flex-col items-center justify-center gap-8">
+            <section className="w-full flex flex-col items-center justify-center gap-8 px-4 sm:px-6 md:px-20 lg:px-28">
                 <motion.h2
                     className="text-3xl md:text-4xl font-bold text-light-purple text-center mb-6"
                     initial={{ opacity: 0, y: 40 }}
@@ -162,9 +182,9 @@ export default function Main() {
 
                 {/* Featured Projects Grid */}
                 <section className="w-full flex flex-col items-center justify-center">
-                    <div className="w-full flex justify-center">
-                        <div className="grid grid-cols-3 grid-rows-2 gap-8 w-[80vw] max-w-6xl mx-auto px-2 md:px-8">
-                            {/* Top row: 3 projects */}
+                    <div className="w-full max-w-6xl mx-auto">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-6">
+                            {/* First up to 3 projects */}
                             {featuredProjects.slice(0, 3).map((project, idx) => (
                                 <motion.div
                                     key={project.id}
@@ -172,17 +192,15 @@ export default function Main() {
                                     whileInView={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 0.35, ease: 'easeOut', delay: 0.2 * idx }}
                                     viewport={{ once: true, amount: 0.6 }}
+                                    className="flex"
                                 >
-                                    <React.Suspense fallback={<div className='h-48' />}>
+                                    <React.Suspense fallback={<div className="h-48" />}>
                                         <ProjectBlock project={project} />
                                     </React.Suspense>
                                 </motion.div>
                             ))}
-                            {/* Fillers if less than 3 */}
-                            {Array.from({ length: Math.max(0, 3 - featuredProjects.slice(0, 3).length) }).map((_, idx) => (
-                                <div key={"empty-top-" + idx} />
-                            ))}
-                            {/* Bottom row: 2 projects */}
+
+                            {/* Next up to 2 projects */}
                             {featuredProjects.slice(3, 5).map((project, idx) => (
                                 <motion.div
                                     key={project.id}
@@ -190,28 +208,28 @@ export default function Main() {
                                     whileInView={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 0.35, ease: 'easeOut', delay: 0.07 * idx }}
                                     viewport={{ once: true, amount: 0.6 }}
+                                    className="flex"
                                 >
-                                    <React.Suspense fallback={<div className='h-48' />}>
+                                    <React.Suspense fallback={<div className="h-48" />}>
                                         <ProjectBlock project={project} />
                                     </React.Suspense>
                                 </motion.div>
                             ))}
-                            {/* More projects block in last cell: circular grid icon */}
+
+                            {/* See all projects */}
                             <motion.div
                                 initial={{ opacity: 0, x: -80 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.35, ease: 'easeOut', delay: 0.21 }}
                                 viewport={{ once: true, amount: 0.6 }}
-                                className="flex items-center justify-center w-full h-full"
+                                className="flex items-center justify-center"
                             >
                                 <button
-                                    className="flex flex-col items-center justify-center bg-linear-to-br from-dark-gray to-light-purple/20 rounded-full border-2 border-dashed border-light-purple text-light-purple shadow-lg min-h-[180px] min-w-[180px] max-h-[220px] max-w-[220px] p-0 hover:scale-110 transition-transform cursor-pointer"
-                                    style={{ aspectRatio: '1/1' }}
+                                    className="flex flex-col items-center justify-center bg-linear-to-br from-dark-gray to-light-purple/20 rounded-full border-2 border-dashed border-light-purple text-light-purple shadow-lg p-0 hover:scale-110 transition-transform cursor-pointer w-36 h-36 sm:w-40 sm:h-40 md:w-48 md:h-48"
                                     onClick={() => window.location.href = '/projects'}
                                     aria-label="See all projects"
                                 >
-                                    {/* Grid icon */}
-                                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="mb-2">
+                                    <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="mb-2">
                                         <rect x="3" y="3" width="6" height="6" rx="2" fill="currentColor" className="opacity-60" />
                                         <rect x="9" y="3" width="6" height="6" rx="2" fill="currentColor" className="opacity-80" />
                                         <rect x="15" y="3" width="6" height="6" rx="2" fill="currentColor" className="opacity-60" />
@@ -222,7 +240,7 @@ export default function Main() {
                                         <rect x="9" y="15" width="6" height="6" rx="2" fill="currentColor" className="opacity-80" />
                                         <rect x="15" y="15" width="6" height="6" rx="2" fill="currentColor" className="opacity-60" />
                                     </svg>
-                                    <span className="text-base font-bold text-center leading-tight">See all projects</span>
+                                    <span className="text-sm sm:text-base font-bold text-center leading-tight">See all projects</span>
                                 </button>
                             </motion.div>
                         </div>
@@ -231,9 +249,9 @@ export default function Main() {
             </section>
 
             {/* Experiences*/}
-            <div>
+            <div className="w-full px-4 sm:px-6 md:px-20 lg:px-28">
                 <motion.p
-                    className="text-xl md:text-3xl text-gray-200 text-center max-w-2xl mb-30 mt-50"
+                    className="text-xl md:text-3xl text-gray-200 text-center max-w-2xl mb-30 mt-50 mx-auto"
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2, ease: 'easeOut', delay: 0.4 }}
@@ -251,7 +269,7 @@ export default function Main() {
                     <ExperienceTimeline />
                     <div className="flex justify-center w-full">
                         <button
-                            className="mt-12 px-8 py-3 bg-light-purple text-dark-gray font-bold rounded-lg shadow hover:bg-accent transition-colors border-2 border-white text-lg"
+                            className="mt-10 px-8 py-3 bg-light-purple text-dark-gray font-bold rounded-lg shadow hover:bg-accent transition-colors border-2 border-white text-lg"
                             onClick={() => window.location.href = '/experiences'}
                         >
                             Learn the details of my experiences
@@ -260,7 +278,7 @@ export default function Main() {
                 </motion.div>
             </div>
 
-            {/* My Skills */}
+            {/* My Skills (keeps original spacing per your note) */}
             <section className="w-full flex flex-col items-center justify-center">
                 <motion.p
                     className="text-xl md:text-3xl text-gray-200 text-center max-w-2xl mb-10 mt-50"
@@ -300,7 +318,7 @@ export default function Main() {
             </section>
 
             {/* Contact Me */}
-            <section className="w-full flex flex-col items-center justify-center py-24">
+            <section className="w-full flex flex-col items-center justify-center py-24 px-4 sm:px-6 md:px-20 lg:px-28">
                 <motion.h2
                     className="text-4xl md:text-5xl font-bold text-light-purple text-center mb-6 mt-30"
                     initial={{ opacity: 0, y: 40 }}

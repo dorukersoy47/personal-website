@@ -24,8 +24,6 @@ export default function SkillsMarquee() {
       .flatMap(cat => cat.skills);
   }, []);
 
-
-
   // No shuffle: use original order for SSR/hydration safety
   const half = Math.ceil(allSkills.length / 2);
   const lines = [allSkills.slice(0, half), allSkills.slice(half)];

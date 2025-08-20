@@ -40,7 +40,7 @@ const projects: Project[] = [
         description: "A video game about juggling a football as much as you can. Developed by the Koç (my high school) Game Dev Club. Published to the Google Play Store (sadly removed due to inactivity).",
         imageSrc: "/images/pixel-bounce.jpg",
         imageAlt: "Pixel Bounce Game",
-        demoName: "Video Demo",
+        demoName: "Video",
         demoUrl: "https://youtube.com/shorts/OTOP6wANBuQ",
         githubUrl: "https://github.com/dorukersoy47/Pixel-Bounce",
         technologies: ["C#", "Unity", "Git"]
@@ -54,7 +54,7 @@ const projects: Project[] = [
         description: "A fast-paced bubble shooter video game developed for the UCL Global Game Jam in 12 hours with two people. The game jam page can be accessed from the GitHub repo.",
         imageSrc: "/images/untitled-bubble-game.jpg",
         imageAlt: "Untitled Bubble Game",
-        demoName: "Video Demo",
+        demoName: "Video",
         demoUrl: "https://youtu.be/w_5sIsqwhzc",
         githubUrl: "https://github.com/dorukersoy47/untitled-bubble-game/tree/main",
         technologies: ["Godot", "GDScript", "Git"]
@@ -68,7 +68,7 @@ const projects: Project[] = [
         description: "A web app for my piano teacher to help him manage his students' information, lessons, and payments. Also, including realtime translation, students talent analysis, and class availability checker modules.",
         imageSrc: "/images/class-manager.jpg",
         imageAlt: "Class Manager Web App",
-        demoName: "Video Demo",
+        demoName: "Video",
         demoUrl: "https://youtu.be/WSGepJqu414",
         githubUrl: "https://github.com/dorukersoy47/Class-Manager",
         technologies: ["HTML", "CSS", "JavaScript", "React", "MongoDB", "Git"]
@@ -82,7 +82,7 @@ const projects: Project[] = [
         description: "Chrome extension for advanced search filtering, saving filters, and highlighting/hiding sites via uploaded .txt files.",
         imageSrc: "/images/search-filter.jpg",
         imageAlt: "Search Filter Extension",
-        demoName: "Video Demo",
+        demoName: "Video",
         demoUrl: "https://youtu.be/-q3bH_ZxtIk",
         githubUrl: "https://github.com/dorukersoy47/search-filter-extension",
         technologies: ["JavaScript", "HTML", "CSS", "Git"]
@@ -122,7 +122,7 @@ const projects: Project[] = [
         description: "Developed an AI bot in Python to play Tetris autonomously using heuristics and reinforcement learning techniques. Sadly, can't put GitHub repo since UCL regulations.",
         imageSrc: "/images/tetris-ai.jpg",
         imageAlt: "Tetris Autoplayer AI Bot",
-        demoName: "Video Demo",
+        demoName: "Video",
         demoUrl: "https://youtube.com/shorts/NrdgoBHuWJY",
         technologies: ["Python", "Pygame", "Reinforcement Learning"]
     },
@@ -135,7 +135,7 @@ const projects: Project[] = [
         description: "Built a pathfinding bot in a randomly generated map with obstacles and markers using backtracking algorithms in C. Sadly, can't put GitHub repo since UCL regulations.",
         imageSrc: "/images/pathfinding-robot.jpg",
         imageAlt: "Pathfinding Robot",
-        demoName: "Video Demo",
+        demoName: "Video",
         demoUrl: "https://youtu.be/43KRZqkZhwg",
         technologies: ["C"]
     },
@@ -159,7 +159,7 @@ const projects: Project[] = [
         description: "Created a Java-based web app for posting, managing, and sorting notes as post-its. Sadly, can't put GitHub repo since UCL regulations.",
         imageSrc: "/images/post-it-app.jpg",
         imageAlt: "Post It Web App",
-        demoName: "Video Demo",
+        demoName: "Video",
         demoUrl: "https://youtu.be/4EDFYj8ph-I",
         technologies: ["Java", "Maven", "CVS"]
     },

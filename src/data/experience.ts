@@ -33,7 +33,7 @@ export const experiences: Experience[] = [
         {
         id: "ibtech-2022",
         title: "Web Developer",
-        company: "IBTech International Information and Communication Technologies (QNB Finansbank)",
+        company: "IBTech Technologies",
         period: "August 2022",
         dateStarted: new Date(2022, 0),
         description: "During my time at IBTech, I analyzed QNB Finansbank's applications to learn about server architecture and quality assurance, and designed a basic MVC website using Visual Studio to understand application structure.",

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Sidebar({ isOpen, setIsOpen, }: { isOpen: boolean; setIsOpen: (open: boolean) => void }) {
     return (
@@ -66,11 +67,14 @@ export default function Sidebar({ isOpen, setIsOpen, }: { isOpen: boolean; setIs
                 {/* Logo at the very bottom */}
                 <div className="flex items-center justify-center mb-10">
                     <Link href="/" onClick={() => setIsOpen(false)}>
-                        <img
+                        <Image
                             src="/icons/logo.svg"
                             alt="Doruk Ersoy Logo"
+                            width={80}
+                            height={80}
                             className="h-20 w-auto filter invert select-none cursor-pointer hover:scale-110 transition-transform"
                             style={{ display: 'inline-block', verticalAlign: 'middle' }}
+                            priority
                         />
                     </Link>
                 </div>

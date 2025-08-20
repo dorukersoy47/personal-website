@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import type { Project } from "../../data/projects";
 
 interface ProjectBlockProps {
@@ -13,9 +14,12 @@ interface ProjectBlockProps {
  * - Hover/active animations via Tailwind transforms
  */
 const ProjectBlock: React.FC<ProjectBlockProps> = ({ project }) => {
+    // If you have pagePath or slug in your Project type, add them to the interface. Otherwise, fallback to id.
     const pagePath =
-        (project as any).pagePath ??
-        ((project as any).slug ? `/projects/${(project as any).slug}` : `/projects/${project.id}`);
+        (project as { pagePath?: string })?.pagePath ??
+        (project as { slug?: string })?.slug
+            ? `/projects/${(project as { slug?: string })?.slug}`
+            : `/projects/${project.id}`;
 
     const handleCardClick = () => {
         if (typeof window !== "undefined") {
@@ -24,7 +28,7 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({ project }) => {
     };
 
     // Prevent card click when interacting with inner buttons/links
-    const stop = (e: React.MouseEvent | React.KeyboardEvent) => {
+    const stop = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement> | React.KeyboardEvent<HTMLDivElement>) => {
         e.stopPropagation();
     };
 
@@ -43,10 +47,13 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({ project }) => {
         >
             {/* Image */}
             {project.imageSrc && (
-                <img
+                <Image
                     src={project.imageSrc}
                     alt={project.imageAlt || project.title}
+                    width={400}
+                    height={144}
                     className="w-full h-32 sm:h-36 object-cover"
+                    priority
                 />
             )}
 
@@ -156,3 +163,4 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({ project }) => {
 };
 
 export default ProjectBlock;
+// Note: Make sure to import Image from 'next/image' at the top

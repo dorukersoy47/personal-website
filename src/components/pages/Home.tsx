@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { projects } from "../../data/projects";
@@ -9,19 +9,32 @@ import ProjectBlock from "../ui/ProjectBlock";
 
 const featuredProjects = projects.filter(project => project.featured);
 
-/**
- * NOTE:
- * Added symmetric horizontal padding to most sections:
- *   base: px-4
- *   sm:   px-6
- *   md:   px-20
- *   lg:   px-28
- * This keeps clear space around the hamburger region on the left AND mirrors it on the right.
- * The Skills section intentionally keeps its original spacing.
- */
 export default function Main() {
+    const [showScrollDown, setShowScrollDown] = useState(true);
+    const [showScrollUp, setShowScrollUp] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollY = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const docHeight = document.body.scrollHeight;
+
+            setShowScrollDown(scrollY < 350);
+
+            setShowScrollUp(scrollY + windowHeight >= docHeight - 200);
+        };
+
+        handleScroll(); // initialize once on mount
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
     return (
-        <main className="min-h-screen flex flex-col items-center justify-center bg-transparent">
+        <main className="min-h-screen flex flex-col items-center justify-center bg-transparent relative">
             {/* Introduction */}
             <section className="w-full flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 md:px-20 lg:px-28">
                 <div className="flex flex-col items-center justify-center min-h-screen w-full">
@@ -82,7 +95,7 @@ export default function Main() {
                     transition={{ duration: 1.2, ease: 'easeOut', delay: 0.3 }}
                     viewport={{ once: true, amount: 0.7 }}
                 >
-                    I am a <b>Software/AI Engineer</b> and <b>Game Developer</b> wanna-be.
+                    I'm an aspiring <b>software</b> and <b>game developer</b>.
                 </motion.p>
                 <motion.p
                     className="text-xl text-gray-200 text-center max-w-2xl mb-8"
@@ -278,7 +291,7 @@ export default function Main() {
                 </motion.div>
             </div>
 
-            {/* My Skills (keeps original spacing per your note) */}
+            {/* My Skills */}
             <section className="w-full flex flex-col items-center justify-center">
                 <motion.p
                     className="text-xl md:text-3xl text-gray-200 text-center max-w-2xl mb-10 mt-50"
@@ -349,6 +362,66 @@ export default function Main() {
                     </button>
                 </div>
             </section>
+
+            { /* UI Helpers */ }
+
+            {/* Non-interactive Scroll Down Indicator */}
+            {showScrollDown && (
+                <motion.div
+                    role="presentation"
+                    aria-hidden="true"
+                    className="fixed z-50 left-1/2 -translate-x-1/2 pointer-events-none"
+                    style={{
+                        bottom: "calc(env(safe-area-inset-bottom, 0px) + 20px)"
+                    }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                    <motion.svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                        className="w-8 h-8 md:w-9 md:h-9 text-light-purple/90"
+                        animate={{ y: [0, 6, 0] }}
+                        transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </motion.svg>
+                </motion.div>
+            )}
+
+            {/* Scroll Up Button */}
+            {showScrollUp && (
+                <button
+                    onClick={scrollToTop}
+                    className="
+                        fixed z-50 right-4 md:right-6
+                        rounded-full
+                        bg-light-purple text-dark-gray
+                        shadow-lg
+                        hover:scale-110 active:scale-95 transition-transform
+                        p-3 md:p-3.5
+                    "
+                    style={{
+                        bottom: "calc(env(safe-area-inset-bottom, 0px) + 16px)"
+                    }}
+                    aria-label="Scroll to top"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-6 h-6 md:w-7 md:h-7"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                    >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+                    </svg>
+                </button>
+            )}
         </main>
     );
 }

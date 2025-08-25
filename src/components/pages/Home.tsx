@@ -95,7 +95,7 @@ export default function Main() {
                     transition={{ duration: 1.2, ease: 'easeOut', delay: 0.3 }}
                     viewport={{ once: true, amount: 0.7 }}
                 >
-                    I'm an aspiring <b>software</b> and <b>game developer</b>.
+                    I&apos;m an aspiring <b>software</b> and <b>game developer</b>.
                 </motion.p>
                 <motion.p
                     className="text-xl text-gray-200 text-center max-w-2xl mb-8"

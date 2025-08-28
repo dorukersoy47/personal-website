@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
-import Link from "next/link";
 import { site } from "../../data/site";
 
 /** Small, stable field wrapper extracted outside the component to avoid re-creation on every keystroke. */
@@ -259,13 +258,6 @@ function SendIcon(props: React.SVGProps<SVGSVGElement>) {
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} {...props}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M22 2L11 13" />
             <path strokeLinecap="round" strokeLinejoin="round" d="M22 2l-7 20-4-9-9-4 20-7z" />
-        </svg>
-    );
-}
-function HomeIcon(props: React.SVGProps<SVGSVGElement>) {
-    return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} {...props}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3 10.5L12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1v-10.5z" />
         </svg>
     );
 }

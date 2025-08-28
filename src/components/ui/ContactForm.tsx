@@ -246,13 +246,6 @@ export default function ContactForm() {
                                 </>
                             )}
                         </button>
-                        <Link
-                            href="/"
-                            className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border-2 border-white/30 text-gray-200 hover:border-white transition-colors"
-                        >
-                            <HomeIcon className="w-5 h-5" />
-                            Back home
-                        </Link>
                     </div>
                 </div>
             </form>

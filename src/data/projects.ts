@@ -1,20 +1,6 @@
-type ProjectType = "Web Development" | "Game Development" | "Paper" | "AI" | "Electronics" | "Other";
-
-interface Project {
-    id: string;
-    featured: boolean;
-    title: string;
-    type: ProjectType;
-    dateDone: Date;
-    description: string;
-    imageSrc?: string;
-    imageAlt?: string;
-    demoName?: string;
-    demoUrl?: string;
-    githubUrl?: string;
-    documentSrc?: string;
-    technologies: string[];
-}
+// projects.ts
+import type { Project, ProjectType } from "./types";
+import { skillMap } from "./skills";
 
 const projects: Project[] = [
     {
@@ -29,7 +15,8 @@ const projects: Project[] = [
         demoName: "Website",
         demoUrl: "https://elementify.vercel.app/",
         githubUrl: "https://github.com/dorukersoy47/Elementify",
-        technologies: ["HTML", "CSS", "JavaScript", "JSON"]
+        documentSrc: undefined,
+        skillsList: [skillMap.html, skillMap["css"], skillMap.javascript]
     },
     {
         id: "pixel-bounce",
@@ -43,7 +30,8 @@ const projects: Project[] = [
         demoName: "Video",
         demoUrl: "https://youtube.com/shorts/OTOP6wANBuQ",
         githubUrl: "https://github.com/dorukersoy47/Pixel-Bounce",
-        technologies: ["C#", "Unity", "Git"]
+        documentSrc: undefined,
+        skillsList: [skillMap.csharp, skillMap.unity, skillMap.git]
     },
     {
         id: "untitled-bubble-game",
@@ -57,7 +45,8 @@ const projects: Project[] = [
         demoName: "Video",
         demoUrl: "https://youtu.be/w_5sIsqwhzc",
         githubUrl: "https://github.com/dorukersoy47/untitled-bubble-game/tree/main",
-        technologies: ["Godot", "GDScript", "Git"]
+        documentSrc: undefined,
+        skillsList: [skillMap.godot, skillMap.gdscript, skillMap.git]
     },
     {
         id: "class-manager",
@@ -71,7 +60,8 @@ const projects: Project[] = [
         demoName: "Video",
         demoUrl: "https://youtu.be/WSGepJqu414",
         githubUrl: "https://github.com/dorukersoy47/Class-Manager",
-        technologies: ["HTML", "CSS", "JavaScript", "React", "MongoDB", "Git"]
+        documentSrc: undefined,
+        skillsList: [skillMap.html, skillMap["css"], skillMap.javascript, skillMap.react, skillMap.mongodb, skillMap.git]
     },
     {
         id: "search-filter-extension",
@@ -85,7 +75,8 @@ const projects: Project[] = [
         demoName: "Video",
         demoUrl: "https://youtu.be/-q3bH_ZxtIk",
         githubUrl: "https://github.com/dorukersoy47/search-filter-extension",
-        technologies: ["JavaScript", "HTML", "CSS", "Git"]
+        documentSrc: undefined,
+        skillsList: [skillMap.javascript, skillMap.html, skillMap["css"], skillMap.git]
     },
     {
         id: "beyin-gocu",
@@ -99,7 +90,8 @@ const projects: Project[] = [
         demoName: "Website",
         demoUrl: "https://beyin-gocu.vercel.app/index.html",
         githubUrl: "https://github.com/dorukersoy47/beyin-gocu",
-        technologies: ["JavaScript", "HTML", "CSS"]
+        documentSrc: undefined,
+        skillsList: [skillMap.javascript, skillMap.html, skillMap["css"]]
     },
     {
         id: "pcg-research",
@@ -111,7 +103,7 @@ const projects: Project[] = [
         imageSrc: "/images/pcg-research.jpg",
         imageAlt: "Procedural Content Generation Research",
         documentSrc: "/documents/CS%20Extended%20Essay-Doruk%20Ersoy",
-        technologies: ["Unity", "C#", "Python", "matplotlib"]
+        skillsList: [skillMap.unity, skillMap.csharp, skillMap.python]
     },
     {
         id: "tetris-ai",
@@ -124,7 +116,7 @@ const projects: Project[] = [
         imageAlt: "Tetris Autoplayer AI Bot",
         demoName: "Video",
         demoUrl: "https://youtube.com/shorts/NrdgoBHuWJY",
-        technologies: ["Python", "Pygame", "Reinforcement Learning"]
+        skillsList: [skillMap.python, skillMap.ai, skillMap.ml]
     },
     {
         id: "pathfinding-robot",
@@ -137,7 +129,7 @@ const projects: Project[] = [
         imageAlt: "Pathfinding Robot",
         demoName: "Video",
         demoUrl: "https://youtu.be/43KRZqkZhwg",
-        technologies: ["C"]
+        skillsList: [skillMap.c]
     },
     {
         id: "bioreactor",
@@ -148,7 +140,7 @@ const projects: Project[] = [
         description: "Designed a small bioreactor that controls temperature, pH, and stirring for optimal yeast growth using Arduino, ESP32, and C for automated monitoring and adjustment of environmental parameters. Sadly, can't put GitHub repo since UCL regulations.",
         imageSrc: "/images/bioreactor.jpg",
         imageAlt: "Bioreactor Project",
-        technologies: ["C", "Arduino", "ESP32", "Control Systems"]
+        skillsList: [skillMap.c]
     },
     {
         id: "post-it-app",
@@ -161,7 +153,7 @@ const projects: Project[] = [
         imageAlt: "Post It Web App",
         demoName: "Video",
         demoUrl: "https://youtu.be/4EDFYj8ph-I",
-        technologies: ["Java", "Maven", "CVS"]
+        skillsList: [skillMap.java]
     },
     {
         id: "greather",
@@ -175,7 +167,7 @@ const projects: Project[] = [
         demoName: "Website",
         demoUrl: "https://greather.vercel.app",
         githubUrl: "https://github.com/dorukersoy47/greather",
-        technologies: ["TypeScript", "Svelte", "Tailwind", "Prisma"]
+        skillsList: [skillMap.typescript, skillMap["tailwind"]]
     }
 ];
 

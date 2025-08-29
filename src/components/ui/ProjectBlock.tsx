@@ -1,49 +1,31 @@
+// ui/ProjectBlock.tsx
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import type { Project } from "../../data/projects";
+import type { Project } from "../../data/types";
 
 interface ProjectBlockProps {
     project: Project;
 }
 
-/**
- * Compact project card (no Framer Motion needed here)
- * - No tech tags
- * - Buttons pinned to the bottom
- * - Hover/active animations via Tailwind transforms
- */
 const ProjectBlock: React.FC<ProjectBlockProps> = ({ project }) => {
-    // If you have pagePath or slug in your Project type, add them to the interface. Otherwise, fallback to id.
     const pagePath =
         (project as { pagePath?: string })?.pagePath ??
-        (project as { slug?: string })?.slug
+        ((project as { slug?: string })?.slug
             ? `/projects/${(project as { slug?: string })?.slug}`
-            : `/projects/${project.id}`;
+            : `/projects/${project.id}`);
 
-    const handleCardClick = () => {
-        if (typeof window !== "undefined") {
-            window.location.href = pagePath;
-        }
-    };
-
-    // Prevent card click when interacting with inner buttons/links
-    const stop = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement> | React.KeyboardEvent<HTMLDivElement>) => {
+    const stop = (
+        e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>
+    ) => {
         e.stopPropagation();
     };
 
     return (
         <div
-            className="group bg-dark-gray rounded-2xl shadow-lg border-2 border-white/10 hover:border-accent transition-all cursor-pointer overflow-hidden w-full max-w-sm md:max-w-[340px] flex flex-col"
-            onClick={handleCardClick}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    handleCardClick();
-                }
-            }}
+            className="bg-dark-gray rounded-2xl shadow-lg border-2 border-white/10 overflow-hidden 
+                       w-full max-w-sm md:max-w-[340px] flex flex-col cursor-default" 
+            // ⛔ card is not interactive → normal cursor
         >
             {/* Image */}
             {project.imageSrc && (
@@ -70,12 +52,10 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({ project }) => {
                     {project.type}
                 </span>
 
-                {/* Spacer to push buttons down */}
                 <div className="flex-1" />
 
-                {/* Buttons (bottomized) */}
+                {/* Buttons */}
                 <div className="flex flex-col gap-2 w-full">
-                    {/* External URLs row */}
                     <div className="flex gap-2">
                         {project.demoName && project.demoUrl && (
                             <a
@@ -87,13 +67,10 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({ project }) => {
                             >
                                 <button
                                     type="button"
-                                    onClick={stop}
-                                    className="w-full px-3 py-1.5 text-sm bg-light-purple text-dark-gray font-bold rounded-lg shadow border-2 border-white
+                                    className="cursor-pointer w-full px-3 py-1.5 text-sm bg-light-purple text-dark-gray font-bold rounded-lg shadow border-2 border-white
                                                transition-transform duration-200 ease-out transform-gpu
                                                hover:-translate-y-0.5 hover:scale-[1.02]
-                                               active:translate-y-0 active:scale-[0.98]
-                                               focus:outline-none focus-visible:ring-2 focus-visible:ring-light-purple/70"
-                                    aria-label={`${project.demoName} (opens in new tab)`}
+                                               active:translate-y-0 active:scale-[0.98]"
                                 >
                                     {project.demoName}
                                 </button>
@@ -110,13 +87,10 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({ project }) => {
                             >
                                 <button
                                     type="button"
-                                    onClick={stop}
-                                    className="w-full px-3 py-1.5 text-sm bg-dark-gray text-light-purple font-bold rounded-lg shadow border-2 border-light-purple
+                                    className="cursor-pointer w-full px-3 py-1.5 text-sm bg-dark-gray text-light-purple font-bold rounded-lg shadow border-2 border-light-purple
                                                transition-transform duration-200 ease-out transform-gpu
                                                hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-accent hover:text-dark-gray
-                                               active:translate-y-0 active:scale-[0.98]
-                                               focus:outline-none focus-visible:ring-2 focus-visible:ring-light-purple/70"
-                                    aria-label="GitHub repository (opens in new tab)"
+                                               active:translate-y-0 active:scale-[0.98]"
                                 >
                                     GitHub
                                 </button>
@@ -124,16 +98,18 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({ project }) => {
                         )}
 
                         {project.documentSrc && (
-                            <a href={project.documentSrc} download className="flex-1" onClick={stop}>
+                            <a
+                                href={project.documentSrc}
+                                download
+                                className="flex-1"
+                                onClick={stop}
+                            >
                                 <button
                                     type="button"
-                                    onClick={stop}
-                                    className="w-full px-3 py-1.5 text-sm bg-dark-gray text-light-purple font-bold rounded-lg shadow border-2 border-light-purple
+                                    className="cursor-pointer w-full px-3 py-1.5 text-sm bg-dark-gray text-light-purple font-bold rounded-lg shadow border-2 border-light-purple
                                                transition-transform duration-200 ease-out transform-gpu
                                                hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-accent hover:text-dark-gray
-                                               active:translate-y-0 active:scale-[0.98]
-                                               focus:outline-none focus-visible:ring-2 focus-visible:ring-light-purple/70"
-                                    aria-label="Download paper"
+                                               active:translate-y-0 active:scale-[0.98]"
                                 >
                                     Paper
                                 </button>
@@ -141,17 +117,14 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({ project }) => {
                         )}
                     </div>
 
-                    {/* Open page button (primary) */}
+                    {/* Details button */}
                     <Link href={pagePath} onClick={stop} className="block">
                         <button
                             type="button"
-                            onClick={stop}
-                            className="w-full px-3 py-2 text-sm sm:text-base bg-light-purple text-dark-gray font-bold rounded-lg shadow border-2 border-white
+                            className="cursor-pointer w-full px-3 py-2 text-sm sm:text-base bg-light-purple text-dark-gray font-bold rounded-lg shadow border-2 border-white
                                        transition-transform duration-200 ease-out transform-gpu
                                        hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-accent
-                                       active:translate-y-0 active:scale-[0.98]
-                                       focus:outline-none focus-visible:ring-2 focus-visible:ring-light-purple/70"
-                            aria-label={`Open ${project.title} page`}
+                                       active:translate-y-0 active:scale-[0.98]"
                         >
                             Details
                         </button>
@@ -163,4 +136,3 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({ project }) => {
 };
 
 export default ProjectBlock;
-// Note: Make sure to import Image from 'next/image' at the top

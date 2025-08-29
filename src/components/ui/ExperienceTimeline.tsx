@@ -1,6 +1,6 @@
 // ExperienceTimeline.tsx
 import React from "react";
-import { experiences } from "../../data/experience";
+import { experiences } from "../../data/experiences";
 
 // Helper to alternate top/bottom
 const isTop = (idx: number) => idx % 2 === 0;

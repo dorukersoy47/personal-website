@@ -61,7 +61,7 @@ export default function ExperienceTimeline() {
                                     }
                                 >
                                     <div className="font-bold text-light-purple text-lg">{exp.title}</div>
-                                    <div className="text-xs text-gray-300 mb-1">{exp.type}</div>
+                                    <div className="text-xs text-gray-300 mb-1">{exp.type.join(", ")}</div>
                                     <div className="text-sm text-white">{exp.company}</div>
                                     <div className="text-xs text-gray-400 mt-1">{exp.period}</div>
                                 </div>

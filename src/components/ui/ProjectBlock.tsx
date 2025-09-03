@@ -14,7 +14,6 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({ project }) => {
         ((project as { slug?: string })?.slug
             ? `/projects/${(project as { slug?: string })?.slug}`
             : `/projects/${project.id}`);
-
     const stop = (
         e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>
     ) => {

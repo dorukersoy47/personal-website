@@ -1,5 +1,3 @@
-// types.ts
-
 export type ProjectType =
     | "Web Development"
     | "Game Development"
@@ -8,6 +6,12 @@ export type ProjectType =
     | "Electronics"
     | "Other";
 
+export type ProjectStatus =
+    | "Active"
+    | "Archived"
+    | "Restricted"
+    | "Removed";
+
 export type ExperienceType =
     | "Internship"
     | "Part-time"
@@ -15,7 +19,11 @@ export type ExperienceType =
     | "Research"
     | "Freelance";
 
-export type ProficiencyLevel = "Beginner" | "Intermediate" | "Advanced" | "Expert";
+export type ProficiencyLevel = 
+    | "Beginner" 
+    | "Intermediate" 
+    | "Advanced" 
+    | "Expert";
 
 export interface Skill {
     id: string;
@@ -35,6 +43,7 @@ export interface Project {
     featured: boolean;
     title: string;
     type: ProjectType;
+    status: ProjectStatus;
     dateDone: Date;
     description: string;
     imageSrc?: string;
@@ -49,11 +58,13 @@ export interface Project {
 export interface Experience {
     id: string;
     title: string;
+    type: ExperienceType[];
     company: string;
+    companyLink: string;
     period: string;
     dateStarted: Date;
     dateEnded?: Date;
     description: string;
+    projectsList: Project[];
     skillsList?: Skill[];
-    type: ExperienceType[];
 }

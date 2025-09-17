@@ -20,6 +20,7 @@ export type ExperienceType =
     | "Freelance";
 
 export type ProficiencyLevel = 
+    | "Interested"
     | "Beginner" 
     | "Intermediate" 
     | "Advanced" 

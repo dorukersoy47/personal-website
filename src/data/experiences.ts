@@ -23,9 +23,9 @@ const experiences: Experience[] = [
         title: "Software/AI Developer",
         type: ["Internship", "Full-time", "Part-time"],
         company: "Selco Consulting",
-        companyLink: "",
+        companyLink: "https://www.linkedin.com/company/selco-consulting/",
         period: "August 2025 - Present",
-        dateStarted: new Date(2025, 0),
+        dateStarted: new Date(2025, 7),
         dateEnded: undefined,
         description: "",
         projectsList: [],
@@ -36,26 +36,26 @@ const experiences: Experience[] = [
         title: "Front-end Web Developer",
         type: ["Internship", "Full-time"],
         company: "Hepsiburada",
-        companyLink: "",
+        companyLink: "https://www.linkedin.com/company/hepsiburada/",
         period: "January 2023 – February 2023",
         dateStarted: new Date(2023, 0),
         dateEnded: new Date(2023, 1),
-        description: "At Hepsiburada, I developed the Elementify website using Vanilla JavaScript, HTML, and CSS, and expanded my skills with Node.js and React by building a to-do app. I also contributed to discussions on localization and package size optimization.",
+        description: "At Hepsiburada, I developed the Elementify website using Vanilla JavaScript, HTML, and CSS. I expanded my skills with Node.js and React by building a to-do app. I also contributed to discussions on localization and package size optimization.",
         projectsList: [projectsMap.elementify],
-        skillsList: [skillMap.javascript, skillMap.html, skillMap.tailwind, skillMap.nodejs, skillMap.react]
+        skillsList: [skillMap.javascript, skillMap.html, skillMap.nodejs, skillMap.react]
     },
     {
         id: "ibtech-2022",
         title: "Web Developer",
         type: ["Internship", "Full-time"],
         company: "IBTech Technologies",
-        companyLink: "",
+        companyLink: "https://www.linkedin.com/company/ibtech-a-s-/",
         period: "August 2022",
-        dateStarted: new Date(2022, 0),
+        dateStarted: new Date(2022, 7),
         dateEnded: undefined,
         description: "During my time at IBTech, I analyzed QNB Finansbank's applications to learn about server architecture and quality assurance, and designed a basic MVC website using Visual Studio to understand application structure.",
         projectsList: [],
-        skillsList: [skillMap.visualstudio]
+        skillsList: [skillMap.visualstudio, skillMap.csharp, ]
     }
 ];
 

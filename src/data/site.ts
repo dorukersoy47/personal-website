@@ -5,6 +5,9 @@ export const site = {
         github: "https://github.com/dorukersoy47",
         linkedin: "https://linkedin.com/in/doruk-ersoy",
         instagram: "https://instagram.com/doruk_ersoy",
+        itchio: "https://dorukersoy47.itch.io/",
+        x: "https://x.com/dorukersoy47",
+        steam: "https://steamcommunity.com/profiles/76561198420256263/",
     },
     nav: [
         { href: "/", label: "Home" },

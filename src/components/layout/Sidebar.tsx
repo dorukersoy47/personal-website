@@ -48,7 +48,7 @@ export default function Sidebar({
                 <div className="flex-grow" />
 
                 {/* Social / Actions */}
-                <div className="flex items-center justify-center gap-4">
+                <div className="grid grid-cols-3 gap-6 place-items-center px-6">
                     {/* Resume */}
                     <a
                         href={site.resumePath}
@@ -100,10 +100,44 @@ export default function Sidebar({
                             <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3.25a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5zm5.13.62a1.13 1.13 0 1 1-2.26 0 1.13 1.13 0 0 1 2.26 0z"/>
                         </svg>
                     </a>
+                    {/* Itch.io */}
+                    <a
+                        href={site.social.itchio}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Itch.io"
+                        className="hover:scale-110 transition-transform"
+                    >
+                        <Image
+                            src="/icons/itchio.svg"
+                            alt="Itch.io"
+                            width={50}
+                            height={50}
+                            className="invert"
+                        />
+                    </a>
+                    {/* X (Twitter) */}
+                    <a
+                        href={site.social.x}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="X (Twitter)"
+                        className="text-light-purple hover:scale-110 transition-transform"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 1200 1227"
+                            width="32"
+                            height="32"
+                            fill="currentColor"
+                        >
+                            <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L362.046 0H0L468.106 681.821L0 1226.37H105.865L515.517 750.218L837.954 1226.37H1200L714.137 519.284H714.163ZM570.195 687.828L521.697 618.82L144.011 79.6944H310.045L614.412 515.685L662.91 584.693L1055.1 1150.3H889.062L570.195 687.853V687.828Z" />
+                        </svg>
+                    </a>
                 </div>
 
                 {/* Logo at the very bottom */}
-                <div className="flex items-center justify-center mb-10">
+                <div className="flex items-center justify-center mb-7 mt-3">
                     <Link href="/" onClick={() => setIsOpen(false)}>
                         <Image
                             src="/icons/logo.svg"

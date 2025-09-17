@@ -15,7 +15,8 @@ const skills: SkillCategory[] = [
             { id: "typescript", name: "TypeScript", level: 4, proficiency: "Intermediate", iconName: "SiTypescript" },
             { id: "html", name: "HTML", level: 6, proficiency: "Advanced", iconName: "SiHtml5" },
             { id: "css", name: "CSS", level: 6, proficiency: "Advanced", iconName: "FaCss3Alt" },
-            { id: "tailwind", name: "Tailwind", level: 6, proficiency: "Advanced", iconName: "SiTailwindcss" }
+            { id: "tailwind", name: "Tailwind", level: 6, proficiency: "Advanced", iconName: "SiTailwindcss" },
+            { id: "json", name: "JSON", level: 7, proficiency: "Intermediate", iconName: "BsFiletypeJson"}
         ]
     },
     {

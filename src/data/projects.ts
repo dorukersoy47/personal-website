@@ -18,7 +18,6 @@ const projects: Project[] = [
         githubUrl: "",
         documentSrc: undefined,
         skillsList: []
-
     },
     */
     {
@@ -37,7 +36,70 @@ const projects: Project[] = [
         documentSrc: undefined,
         skillsList: [skillMap.gdscript, skillMap.godot, skillMap.git]
     },
-    // Add Selco projects: 2 research projects, ship360 maps, watsonxai benchmark project
+    {
+        id: "ibm-watsonx-benchmark",
+        featured: false,
+        title: "IBM Watsonx Benchmark",
+        type: "AI",
+        status: "Active",
+        dateDone: new Date(2025, 0),
+        description: "",
+        imageSrc: "",
+        imageAlt: "",
+        demoName: "",
+        demoUrl: "",
+        githubUrl: "",
+        documentSrc: undefined,
+        skillsList: []
+    },
+    {
+        id: "ship360-maps",
+        featured: false,
+        title: "Ship360 Maps",
+        type: "Web Development",
+        status: "Restricted",
+        dateDone: new Date(2025, 0),
+        description: "",
+        imageSrc: "",
+        imageAlt: "",
+        demoName: "",
+        demoUrl: "",
+        githubUrl: "",
+        documentSrc: undefined,
+        skillsList: []
+    },
+    {
+        id: "llm-memory-research",
+        featured: false,
+        title: "LLM and Memory Storing Research",
+        type: "Paper",
+        status: "Active",
+        dateDone: new Date(2025, 0),
+        description: "",
+        imageSrc: "",
+        imageAlt: "",
+        demoName: "",
+        demoUrl: "",
+        githubUrl: "",
+        documentSrc: "/documents/llm-memory.pdf",
+        skillsList: []
+    },
+    {
+        id: "ml-research",
+        featured: false,
+        title: "Machine Learning Methods for Retail Research",
+        type: "Paper",
+        status: "Active",
+        dateDone: new Date(2025, 0),
+        description: "",
+        imageSrc: "",
+        imageAlt: "",
+        demoName: "",
+        demoUrl: "",
+        githubUrl: "",
+        documentSrc: "/documents/ml-retail.pdf",
+        skillsList: []
+    },
     {
         id: "untitled-bubble-game",
         featured: true,
@@ -48,8 +110,8 @@ const projects: Project[] = [
         description: "A fast-paced bubble shooter video game developed for the UCL Global Game Jam in 12 hours with two people. The game jam page can be accessed from the GitHub repo.",
         imageSrc: "/images/untitled-bubble-game.jpg",
         imageAlt: "Untitled Bubble Game",
-        demoName: "Video",
-        demoUrl: "https://youtu.be/w_5sIsqwhzc",
+        demoName: "Itchio Page",
+        demoUrl: "https://dorukersoy47.itch.io/untitled-bubble-game",
         githubUrl: "https://github.com/dorukersoy47/untitled-bubble-game/tree/main",
         documentSrc: undefined,
         skillsList: [skillMap.godot, skillMap.gdscript, skillMap.git]
@@ -179,7 +241,7 @@ const projects: Project[] = [
         demoName: undefined,
         demoUrl: undefined,
         githubUrl: undefined,
-        documentSrc: "/documents/CS%20Extended%20Essay-Doruk%20Ersoy",
+        documentSrc: "/documents/cs-ee.pdf",
         skillsList: [skillMap.unity, skillMap.csharp, skillMap.python]
     },
     {

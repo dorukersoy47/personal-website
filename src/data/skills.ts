@@ -36,7 +36,8 @@ const skills: SkillCategory[] = [
             { id: "mongodb", name: "MongoDB", level: 3, proficiency: "Intermediate", iconName: "SiMongodb" },
             { id: "visualstudio", name: "Visual Studio", level: 5, proficiency: "Advanced", iconName: "BiLogoVisualStudio" },
             { id: "figma", name: "Figma", level: 3, proficiency: "Intermediate", iconName: "FaFigma" },
-            { id: "canva", name: "Canva", level: 7, proficiency: "Advanced", iconName: "SiCanva" }
+            { id: "canva", name: "Canva", level: 7, proficiency: "Advanced", iconName: "SiCanva" },
+            { id: "watsonx", name: "IBM Watsonx", level: 4, proficiency: "Beginner", iconName: "GiArtificialHive"}
         ]
     },
     {

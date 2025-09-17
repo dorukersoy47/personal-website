@@ -43,14 +43,14 @@ const projects: Project[] = [
         type: "AI",
         status: "Active",
         dateDone: new Date(2025, 0),
-        description: "",
-        imageSrc: "",
-        imageAlt: "",
+        description: "A code and report on the comparison of different IBM AI Agent LLM models' Turkish usage efficiency.",
+        imageSrc: "/images/ibm-watsonx-benchmark.jpg",
+        imageAlt: "IBM Watsonx Benchmark",
         demoName: "",
         demoUrl: "",
-        githubUrl: "",
+        githubUrl: "https://github.com/dorukersoy47/watsonx-turkish-benchmark",
         documentSrc: undefined,
-        skillsList: []
+        skillsList: [skillMap.watsonx, skillMap.git, skillMap.python]
     },
     {
         id: "ship360-maps",
@@ -102,7 +102,7 @@ const projects: Project[] = [
     },
     {
         id: "untitled-bubble-game",
-        featured: true,
+        featured: false,
         title: "Untitled Bubble Game",
         type: "Game Development",
         status: "Active",
@@ -134,7 +134,7 @@ const projects: Project[] = [
     },
     {
         id: "tetris-ai",
-        featured: false,
+        featured: true,
         title: "Tetris Autoplayer AI Bot",
         type: "AI",
         status: "Restricted",

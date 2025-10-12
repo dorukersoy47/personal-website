@@ -1,6 +1,6 @@
 export const site = {
-    email: "dorukersoy47@gmail.com",
-    resumePath: "/documents/Resume-Doruk%20Ersoy.pdf",
+    email: "dorukersoy2006@gmail.com",
+    resumePath: "/documents/Doruk-Ersoy-Resume.pdf",
     social: {
         github: "https://github.com/dorukersoy47",
         linkedin: "https://linkedin.com/in/doruk-ersoy",

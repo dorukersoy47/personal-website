@@ -1,23 +1,26 @@
 export type ProjectType =
     | "Web Development"
     | "Game Development"
-    | "Paper"
+    | "App Development"
+    | "Research"
     | "AI"
     | "Electronics"
+    | "Systems & Engines"
     | "Other";
 
 export type ProjectStatus =
     | "Active"
     | "Archived"
     | "Restricted"
-    | "Removed";
 
 export type ExperienceType =
     | "Internship"
     | "Part-time"
     | "Full-time"
     | "Research"
-    | "Freelance";
+    | "Freelance"
+    | "Leadership"
+    | "Volunteering";
 
 export type ProficiencyLevel = 
     | "Interested"
@@ -46,13 +49,14 @@ export interface Project {
     type: ProjectType;
     status: ProjectStatus;
     dateDone: Date;
-    description: string;
+    desc_tech: string;
+    desc_refl: string;
     imageSrc?: string;
     imageAlt?: string;
     demoName?: string;
     demoUrl?: string;
     githubUrl?: string;
-    documentSrc?: string;
+    docSrc?: string;
     skillsList?: Skill[];
 }
 
@@ -65,7 +69,8 @@ export interface Experience {
     period: string;
     dateStarted: Date;
     dateEnded?: Date;
-    description: string;
+    desc_tech: string;
+    desc_refl: string;
     projectsList: Project[];
     skillsList?: Skill[];
 }

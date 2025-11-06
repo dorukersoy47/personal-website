@@ -96,9 +96,9 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({ project }) => {
                             </a>
                         )}
 
-                        {project.documentSrc && (
+                        {project.docSrc && (
                             <a
-                                href={project.documentSrc}
+                                href={project.docSrc}
                                 download
                                 className="flex-1"
                                 onClick={stop}

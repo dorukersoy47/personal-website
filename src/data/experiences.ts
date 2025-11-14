@@ -9,6 +9,7 @@ const experiences: Experience[] = [
     /*
     {
         id: "",
+        featured: ,
         title: "",
         type: [""],
         company: "",
@@ -22,12 +23,9 @@ const experiences: Experience[] = [
         skillsList: []
     },
     */
-
-    // ────────────────────────────────
-    //  UCL Experiences
-    // ────────────────────────────────
     {
         id: "mentor-2025",
+        featured: true,
         title: "Programming Mentor",
         type: ["Part-time"],
         company: "University College London (UCL)",
@@ -42,7 +40,8 @@ const experiences: Experience[] = [
     },
     {
         id: "gamedev-2025",
-        title: "President, UCL Game Development Society",
+        featured: true,
+        title: "President",
         type: ["Part-time", "Leadership"],
         company: "UCL Game Development Society",
         companyLink: "",
@@ -54,13 +53,10 @@ const experiences: Experience[] = [
         projectsList: [projectsMap["flame-n-bake"], projectsMap["untitled-bubble-game"]],
         skillsList: [ skillMap.unity, skillMap.csharp, skillMap.gdscript, skillMap.godot, skillMap.leadership, skillMap.teamwork, skillMap.projectmanagement, skillMap.communication, skillMap.socialmedia, skillMap.publicspeaking ]
     },
-
-    // ────────────────────────────────
-    //  Internships
-    // ────────────────────────────────
     {
         id: "selco-2025",
         title: "Software and AI Developer",
+        featured: true,
         type: ["Internship", "Full-time", "Part-time"],
         company: "Selco Consulting",
         companyLink: "https://www.linkedin.com/company/selco-consulting/",
@@ -75,6 +71,7 @@ const experiences: Experience[] = [
     {
         id: "hepsiburada-2023",
         title: "Front-end Web Developer Intern",
+        featured: true,
         type: ["Internship", "Full-time"],
         company: "Hepsiburada",
         companyLink: "https://www.linkedin.com/company/hepsiburada/",
@@ -89,6 +86,7 @@ const experiences: Experience[] = [
     {
         id: "ibtech-2022",
         title: "Web Developer Intern",
+        featured: false,
         type: ["Internship", "Full-time"],
         company: "IBTech Technologies",
         companyLink: "https://www.linkedin.com/company/ibtech-a-s-/",
@@ -105,6 +103,7 @@ const experiences: Experience[] = [
     // ────────────────────────────────
     {
         id: "gymnastics-2022",
+        featured: false,
         title: "Assistant Gymnastics Coach",
         type: ["Volunteering", "Part-time"],
         company: "Atasehir Cimnastik Akademi",
@@ -112,13 +111,14 @@ const experiences: Experience[] = [
         period: "September 2022 - April 2023",
         dateStarted: new Date(2022, 8),
         dateEnded: new Date(2023, 3),
-        desc_tech: "",   
-        desc_refl: "",
+        desc_tech: "As an assistant gymnastics coach, I supported the lead coaches during training sessions for children and young athletes. I helped plan warm ups and basic drills, demonstrated movements, spotted students during balance and tumbling exercises, and monitored safety on the equipment. I also gave simple individual feedback to help students improve their form and confidence over time.",
+        desc_refl: "Coaching taught me how to communicate clearly with younger students, stay patient under pressure, and manage a group while keeping everyone engaged and safe. I became more confident speaking in front of a class, learned how to motivate different personalities, and developed a stronger sense of responsibility by acting as a role model on and off the mat.",
         projectsList: [],
         skillsList: [skillMap.teaching, skillMap.communication, skillMap.leadership, skillMap.publicspeaking]
     },
     {
         id: "beyingocu-2024",
+        featured: false,
         title: "Beyin Gocu Tutoring Platform",
         type: ["Volunteering"],
         company: "Beyin Gocu Organisation",
@@ -126,8 +126,8 @@ const experiences: Experience[] = [
         period: "September 2023 - June 2024",
         dateStarted: new Date(2023, 8),
         dateEnded: new Date(2024, 5),
-        desc_tech: "",   
-        desc_refl: "",
+        desc_tech: "I co founded Beyin Gocu, a student led tutoring platform that shares IB and AP study resources through a website and video content. I helped design and maintain the site using HTML and CSS, organised subject pages and blog style posts, and coordinated the upload workflow for our YouTube channel with more than twenty videos. I also contributed to lesson scripts and example solutions so that our materials stayed consistent, clear, and helpful for students preparing for exams.",
+        desc_refl: "This experience showed me how to turn my own subject knowledge into structured resources that others can actually use. Working with a small team improved my project planning skills, from deciding which topics to cover first to scheduling content releases. It also strengthened my communication and teaching skills as I learned to explain complex ideas in simple language for a wide range of students.",
         projectsList: [projectsMap["beyin-gocu"]],
         skillsList: [skillMap.oop, skillMap.java, skillMap.css, skillMap.html, skillMap.socialmedia, skillMap.collaboration, skillMap.teaching, skillMap.communication, skillMap.projectmanagement]
     },

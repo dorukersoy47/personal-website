@@ -3,14 +3,67 @@ import { skillMap } from "./skills";
 
 const projects: Project[] = [
 
-  // ────────────────────────────────
-  //  WEB DEVELOPMENT PROJECTS
-  // ────────────────────────────────
+  /* Example project
+  {
+    id: "",
+    featured: ,
+    title: "",
+    type: "",
+    status: "",
+    dateDone: ,
+    desc_tech "",
+    desc_refl: "",
+    imageSrc: "",
+    imageAlt: "",
+    demoName: "",
+    demoUrl: "",
+    githubUrl: "",
+    docSrc: undefined,
+    skillsList: []
+  },
+  */
+
+    /*
+  {
+    id: "readingstar-2",
+    featured: true,
+    title: "ReadingStar 2.0",
+    type: ["App Development", "AI"],
+    status: "Active",
+    dateDone: new Date(2025, 0),
+    desc_tech: "ReadingStar 2.0 is a Windows desktop app built with Electron and a Python backend that helps autistic children practice vocalisation in a calm, guided environment. Working with UCL, Intel, IBM, and the National Autistic Society, I integrated local IBM Granite models, text to speech, and OpenVINO so all AI runs fully offline. We use JavaScript for the interactive front end and Nuitka to package the Python services into a distributable bundle, enabling low latency speech prompts and feedback without sending any data to the cloud.",
+    desc_refl: "This project showed me what it means to design AI tools for accessibility first. Collaborating with researchers and charity partners helped me translate user studies into product decisions, from interface simplicity to offline requirements and strict privacy constraints. I learned how to balance model performance with deployment constraints on everyday hardware while keeping the experience friendly for children and families.",
+    imageSrc: "/images/readingstar-2.jpg",
+    imageAlt: "ReadingStar 2.0 desktop app for assisted reading",
+    demoName: undefined,
+    demoUrl: undefined,
+    githubUrl: undefined,
+    docSrc: undefined,
+    skillsList: [skillMap.python, skillMap.nuitka, skillMap.ibmgranite, skillMap.openvino, skillMap.electron, skillMap.javascript, skillMap.ai, skillMap.ml, skillMap.projectmanagement, skillMap.teamwork, skillMap.communication]
+  },
+  */
+  {
+    id: "lighthouse-ai",
+    featured: true,
+    title: "Lighthouse AI",
+    type: ["AI", "Web Development"],
+    status: "Active",
+    dateDone: new Date(2025, 0),
+    desc_tech: "Lighthouse AI is a productivity analytics platform that uses Python, MediaPipe, and the OpenAI API to understand how developers spend their time. I built multi agent workflows that correlate signals from GitHub, Slack, and calendar events with motion tracking from the webcam to detect focus patterns, interruptions, and potential burnout risks. The system runs analyses on activity timelines, generates summaries of working habits, and surfaces root cause explanations together with suggestions for healthier routines.",
+    desc_refl: "Designing Lighthouse AI taught me how to orchestrate several specialised agents and join noisy telemetry into clear, actionable insights. I had to think carefully about data privacy, failure cases in external APIs, and how to present feedback in a way that feels supportive rather than judgmental. The project strengthened my skills in backend design, API integration, and evaluation of AI behaviour on messy real world data.",
+    imageSrc: "/images/lighthouse.jpg",
+    imageAlt: "Lighthouse AI productivity analytics dashboard",
+    demoName: "Website",
+    demoUrl: "thouse-py-studio.lovable.app",
+    githubUrl: "https://github.com/dorukersoy47/burnout-detector",
+    docSrc: undefined,
+    skillsList: [skillMap.python, skillMap.mediapipe, skillMap.openai, skillMap.ai, skillMap.git, skillMap.projectmanagement, skillMap.projectmanagement, skillMap.teamwork, skillMap.collaboration]
+  },
   {
     id: "portfolio-website",
     featured: false,
     title: "Portfolio Website",
-    type: "Web Development",
+    type: ["Web Development"],
     status: "Active",
     dateDone: new Date(2025, 0),
     desc_tech: "I built my personal portfolio website using Next.js, TypeScript, and Tailwind to create a scalable, modular, and visually consistent platform. The project emphasizes type safety, reusable components, and optimized server-side rendering for performance. I integrated dynamic data mapping from TypeScript objects to display projects and experiences seamlessly. The structure follows a clean, component-driven architecture with global state management for interactivity.",
@@ -25,9 +78,9 @@ const projects: Project[] = [
   },
   {
     id: "search-filter-extension",
-    featured: true,
+    featured: false,
     title: "Search Filter Extension",
-    type: "Web Development",
+    type: ["Web Development"],
     status: "Active",
     dateDone: new Date(2025, 0),
     desc_tech: "We developed a Chrome extension to streamline advanced search workflows across the web with a group of 4. The extension allows users to store filters, highlight or hide domains via uploaded .txt lists, and modify search results dynamically. Built with JavaScript, HTML, and CSS, we handled asynchronous storage, dynamic DOM parsing, and Chrome API interactions. We also implemented a user-friendly interface with persistent configurations and filter serialization.",
@@ -42,9 +95,9 @@ const projects: Project[] = [
   },
   {
     id: "class-manager",
-    featured: true,
+    featured: false,
     title: "Class Manager",
-    type: "Web Development",
+    type: ["Web Development"],
     status: "Archived",
     dateDone: new Date(2024, 0),
     desc_tech: "I created Class Manager as a full-stack solution for my piano teacher to manage students, lessons, and payments. Using React for the frontend and MongoDB for storage, I designed modules for translation, student analytics, and availability tracking. I built an interactive dashboard with live search, CRUD functionality, and form validation. The backend handled efficient queries.",
@@ -61,7 +114,7 @@ const projects: Project[] = [
     id: "elementify",
     featured: false,
     title: "Elementify",
-    type: "Web Development",
+    type: ["Web Development"],
     status: "Active",
     dateDone: new Date(2024, 0),
     desc_tech: "Elementify is a fun and interactive web app that converts names into symbolic representations of chemical elements. I designed the UI to be responsive and accessible, focusing on playful interactivity and instant feedback. The frontend, developed using HTML, CSS, and JavaScript, dynamically maps input strings to element symbols from a JSON periodic table.",
@@ -78,7 +131,7 @@ const projects: Project[] = [
     id: "beyin-gocu",
     featured: false,
     title: "Beyin Göçü Website",
-    type: "Web Development",
+    type: ["Web Development"],
     status: "Active",
     dateDone: new Date(2023, 0),
     desc_tech: "As part of a small team, I developed the Beyin Göçü website to promote a student initiative focused on teaching IB and AP subjects. I was responsible for structuring pages, integrating embedded videos, and ensuring responsive layouts for mobile and desktop. The project utilized JavaScript, HTML, and CSS, following a modular and accessible layout for clarity. I also collaborated on content management and UI adjustments to match the team's branding.",
@@ -95,7 +148,7 @@ const projects: Project[] = [
     id: "ship360-maps",
     featured: false,
     title: "Ship360 Maps",
-    type: "Web Development",
+    type: ["Web Development"],
     status: "Restricted",
     dateDone: new Date(2025, 0),
     desc_tech: "At Selco Consulting, I built tool for visualizing oil warehouse and route networks on an interactive map of Turkey for the company Petrol Ofisi. I used React and Leaflet to design a map interface with location markers, layered visual data, and route drawing capabilities. I focused on modular components and smooth zooming performance even on lower-end systems. The app also included route filtering and dynamic data integration.",
@@ -112,7 +165,7 @@ const projects: Project[] = [
     id: "post-it-app",
     featured: false,
     title: "Post-it Notes Web App",
-    type: "Web Development",
+    type: ["Web Development"],
     status: "Restricted",
     dateDone: new Date(2025, 0),
     desc_tech: "I developed a Java/Maven web application that allows users to create, manage, and categorize virtual sticky notes. The app was part of my UCL coursework and required efficient server-client communication, filtering, sorting, and storage of note data. I implemented a dynamic note-sorting feature and improved usability with simple but clear styling.",
@@ -129,7 +182,7 @@ const projects: Project[] = [
     id: "greather",
     featured: false,
     title: "Greather Hackathon Project",
-    type: "Web Development",
+    type: ["Web Development"],
     status: "Archived",
     dateDone: new Date(2023, 0),
     desc_tech: "During the IB Celo Hackathon, I collaborated with 3 teammates to create a sustainability platform that rewards users for eco-friendly actions. I worked primarily on the frontend logic and layout using TypeScript and Tailwind, ensuring responsive design and smooth user flow.",
@@ -143,15 +196,11 @@ const projects: Project[] = [
     skillsList: [skillMap.typescript, skillMap.tailwind, skillMap.collaboration, skillMap.communication, skillMap.teamwork]
   },
 
-  // ────────────────────────────────
-  //  AI PROJECTS
-  // ────────────────────────────────
-
   {
     id: "database-comparison-tool",
     featured: false,
     title: "Database Comparison Tool",
-    type: "App Development",
+    type: ["App Development"],
     status: "Restricted",
     dateDone: new Date(2025, 0),
     desc_tech: "At Selco Consulting, I co-developed an internal app to compare SQL databases and export discrepancies as Excel reports using Python and MySQL. The script performed schema analysis, cross-table validation, and summarized mismatched records for auditing. It also converted CSV files and SQL into each other in both ways.",
@@ -165,14 +214,11 @@ const projects: Project[] = [
     skillsList: [skillMap.python, skillMap.sql, skillMap.git, skillMap.projectmanagement, skillMap.communication, skillMap.teamwork, skillMap.collaboration]
   },
 
-  // ────────────────────────────────
-  //  AI PROJECTS
-  // ────────────────────────────────
   {
     id: "ibm-watsonx-benchmark",
     featured: true,
     title: "IBM Watsonx Turkish Benchmark",
-    type: "AI",
+    type: ["AI"],
     status: "Active",
     dateDone: new Date(2025, 0),
     desc_tech: "I created a benchmarking framework to test IBM Watsonx Agent models' efficiency in processing Turkish prompts, which is a language not officially supported by the LLMs. I built evaluation pipelines using Python for ROUGE-1/2/L scoring and automated batch tests for multiple model configurations.",
@@ -187,9 +233,9 @@ const projects: Project[] = [
   },
   {
     id: "tetris-ai",
-    featured: true,
+    featured: false,
     title: "Tetris Autoplayer AI Bot",
-    type: "AI",
+    type: ["AI"],
     status: "Restricted",
     dateDone: new Date(2025, 0),
     desc_tech: "For a university coursework, I developed a Python bot capable of autonomously playing Tetris using a heuristic scoring system and reinforcement learning-inspired strategy. The bot evaluated future states with weighted features such as line clears, hole counts, and column heights.",
@@ -202,15 +248,11 @@ const projects: Project[] = [
     docSrc: undefined,
     skillsList: [skillMap.python, skillMap.ai, skillMap.ml]
   },
-
-  // ────────────────────────────────
-  //  Research PROJECTS
-  // ────────────────────────────────
   {
     id: "llm-research",
     featured: false,
     title: "LLM Memory and Storage Research",
-    type: "Research",
+    type: ["Research"],
     status: "Archived",
     dateDone: new Date(2025, 0),
     desc_tech: "In this independent research project, I explored short-term and long-term memory implementations for large language models. I examined different retrieval mechanisms, vector database structures, and attention-based recall strategies for maintaining conversational coherence.",
@@ -227,7 +269,7 @@ const projects: Project[] = [
     id: "ml-research",
     featured: false,
     title: "Machine Learning for Retail Research",
-    type: "Research",
+    type: ["Research"],
     status: "Archived",
     dateDone: new Date(2025, 0),
     desc_tech:"I conducted a study on machine learning models for retail demand forecasting and anomaly detection. The research included visualizing trends and tuning models for interpretability. I also investigated data preprocessing pipelines to improve prediction stability.",
@@ -242,9 +284,9 @@ const projects: Project[] = [
   },
   {
     id: "pcg-research",
-    featured: true,
+    featured: false,
     title: "Procedural Content Generation Research",
-    type: "Research",
+    type: ["Research"],
     status: "Archived",
     dateDone: new Date(2024, 0),
     desc_tech: "For my IB extended essay, I researched about the comparison of procedural content generation algorithms in 2D game design using Unity. I implemented both cellular automata and Perlin noise methods to generate maps and analyzed their differences through Python matplotlib libray.",
@@ -257,15 +299,11 @@ const projects: Project[] = [
     docSrc: "/documents/cs-ee.pdf",
     skillsList: [skillMap.unity, skillMap.csharp, skillMap.python, skillMap.research]
   },
-
-  // ────────────────────────────────
-  //  GAME DEVELOPMENT PROJECTS
-  // ────────────────────────────────
   {
     id: "flame-n-bake",
     featured: true,
     title: "Flame n Bake",
-    type: "Game Development",
+    type: ["Game Development"],
     status: "Active",
     dateDone: new Date(2025, 0),
     desc_tech: "I developed Flame n Bake with a teammate for Brackeys Game Jam, a roguelike bullet-hell about maintaining balance between risk and reward. We implemented bullet & enemy movement patterns and sprite-based particle effects using Godot and GDScript.",
@@ -282,7 +320,7 @@ const projects: Project[] = [
     id: "untitled-bubble-game",
     featured: false,
     title: "Untitled Bubble Game",
-    type: "Game Development",
+    type: ["Game Development"],
     status: "Active",
     dateDone: new Date(2025, 0),
     desc_tech: "During the UCL Global Game Jam, I co-developed Untitled Bubble Game, a fast-paced bubble shooter mini-game. Built in Godot, we implemented projectile and mouse following logic. The entire game was completed in 12 hours, requiring rapid prototyping and team synchronization.",
@@ -299,7 +337,7 @@ const projects: Project[] = [
     id: "pixel-bounce",
     featured: false,
     title: "Pixel Bounce",
-    type: "Game Development",
+    type: ["Game Development"],
     status: "Archived",
     dateDone: new Date(2023, 0),
     desc_tech:"I co-founded my high school's Game Development Club and led the development of Pixel Bounce, a mobile football juggling game published to Google Play Store. Using Unity and C#, I programmed physics-based mechanics for ball control. I coordinated the art and sound integration while ensuring performance across Android devices.",
@@ -310,7 +348,7 @@ const projects: Project[] = [
     demoUrl: "https://youtube.com/shorts/OTOP6wANBuQ",
     githubUrl: "https://github.com/dorukersoy47/Pixel-Bounce",
     docSrc: undefined,
-    skillsList: [skillMap.csharp, skillMap.unity, skillMap.git, skillMap.collaboration, skillMap.teamwork, skillMap.communication, skillMap.timemanagement, skillMap.projectmanagement]
+    skillsList: [skillMap.csharp, skillMap.matplotlib, skillMap.unity, skillMap.git, skillMap.collaboration, skillMap.teamwork, skillMap.communication, skillMap.timemanagement, skillMap.projectmanagement]
   },
 
   // ────────────────────────────────
@@ -320,7 +358,7 @@ const projects: Project[] = [
     id: "pathfinding-robot",
     featured: false,
     title: "Pathfinding Robot",
-    type: "Systems & Engines",
+    type: ["Systems & Engines"],
     status: "Restricted",
     dateDone: new Date(2025, 0),
     desc_tech:"For a university practical assignment, I programmed a pathfinding robot in C that navigates a randomly generated map with random obstacles and markers. I implemented backtracking and recursive search algorithms to collect markers efficiently while avoiding map boundaries. I optimized memory use by managing stack operations manually and visualized traversal logs for debugging.",
@@ -337,7 +375,7 @@ const projects: Project[] = [
     id: "bioreactor",
     featured: false,
     title: "IoT-Controlled Mini Bioreactor",
-    type: "Electronics",
+    type: ["Electronics"],
     status: "Archived",
     dateDone: new Date(2025, 0),
     desc_tech: "As a team 8 consisting of EE and CS students from UCL, we designed and programmed a small-scale IoT bioreactor capable of monitoring and controlling temperature, pH, and stirring rate for yeast cultivation. Using Arduino and ESP32 microcontrollers, we implemented PID-based temperature regulation and serial communication between sensor modules. The system transmitted live data through Wi-Fi to a web dashboard we designed for remote supervision.",

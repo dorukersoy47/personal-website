@@ -1,23 +1,24 @@
 // ui/ProjectBlock.tsx
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import type { Project } from "../../data/types";
 
 interface ProjectBlockProps {
     project: Project;
+    onDetailsClick?: (project: Project) => void;
 }
 
-const ProjectBlock: React.FC<ProjectBlockProps> = ({ project }) => {
-    const pagePath =
-        (project as { pagePath?: string })?.pagePath ??
-        ((project as { slug?: string })?.slug
-            ? `/projects/${(project as { slug?: string })?.slug}`
-            : `/projects/${project.id}`);
+const ProjectBlock: React.FC<ProjectBlockProps> = ({ project, onDetailsClick }) => {
     const stop = (
         e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>
     ) => {
         e.stopPropagation();
+    };
+
+    const handleDetailsClick = () => {
+        if (onDetailsClick) {
+            onDetailsClick(project);
+        }
     };
 
     return (
@@ -117,17 +118,16 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({ project }) => {
                     </div>
 
                     {/* Details button */}
-                    <Link href={pagePath} onClick={stop} className="block">
-                        <button
-                            type="button"
-                            className="cursor-pointer w-full px-3 py-2 text-sm sm:text-base bg-light-purple text-dark-gray font-bold rounded-lg shadow border-2 border-white
-                                       transition-transform duration-200 ease-out transform-gpu
-                                       hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-accent
-                                       active:translate-y-0 active:scale-[0.98]"
-                        >
-                            Details
-                        </button>
-                    </Link>
+                    <button
+                        type="button"
+                        onClick={handleDetailsClick}
+                        className="cursor-pointer w-full px-3 py-2 text-sm sm:text-base bg-light-purple text-dark-gray font-bold rounded-lg shadow border-2 border-white
+                                   transition-transform duration-200 ease-out transform-gpu
+                                   hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-accent
+                                   active:translate-y-0 active:scale-[0.98]"
+                    >
+                        Details
+                    </button>
                 </div>
             </div>
         </div>

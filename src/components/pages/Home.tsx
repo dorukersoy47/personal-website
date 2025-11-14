@@ -2,16 +2,29 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { projects } from "../../data/projects";
+import { projects, type Project } from "../../data/projects";
 import SkillsMarquee from "../ui/SkillsMarquee";
 import ExperienceTimeline from "../ui/ExperienceTimeline";
 import ProjectBlock from "../ui/ProjectBlock";
+import ProjectModal from "../ui/ProjectModal";
 
 const featuredProjects = projects.filter(project => project.featured);
 
 export default function Main() {
     const [showScrollDown, setShowScrollDown] = useState(true);
     const [showScrollUp, setShowScrollUp] = useState(false);
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleProjectDetailsClick = (project: Project) => {
+        setSelectedProject(project);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedProject(null);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -95,7 +108,7 @@ export default function Main() {
                     transition={{ duration: 1.2, ease: 'easeOut', delay: 0.3 }}
                     viewport={{ once: true, amount: 0.7 }}
                 >
-                    I&apos;m an aspiring <b>software</b> and <b>game developer</b>.
+                    I&apos;m an aspiring <b>software engineer</b> and <b>game developer</b>.
                 </motion.p>
                 <motion.p
                     className="text-xl text-gray-200 text-center max-w-2xl mb-8"
@@ -127,7 +140,7 @@ export default function Main() {
                     >
                         <span className="text-lg text-light-purple mb-4 text-center">Other info on the subject of me.</span>
                         <Link href="/about" className="mt-auto">
-                            <button className="bg-light-purple text-dark-gray font-bold px-6 py-2 rounded-lg shadow hover:bg-accent transition-colors border-2 border-white">About Me</button>
+                            <button className="bg-light-purple text-dark-gray font-bold px-6 py-2 rounded-lg shadow hover:bg-accent hover:scale-105 transition-all duration-200 border-2 border-white">About Me</button>
                         </Link>
                     </motion.div>
 
@@ -141,7 +154,7 @@ export default function Main() {
                     >
                         <span className="text-lg text-light-purple mb-4 text-center">The boring stuff I had to do to get here.</span>
                         <Link href="/education" className="mt-auto">
-                            <button className="bg-light-purple text-dark-gray font-bold px-6 py-2 rounded-lg shadow hover:bg-accent transition-colors border-2 border-white">My Education</button>
+                            <button className="bg-light-purple text-dark-gray font-bold px-6 py-2 rounded-lg shadow hover:bg-accent hover:scale-105 transition-all duration-200 border-2 border-white">My Education</button>
                         </Link>
                     </motion.div>
 
@@ -155,7 +168,7 @@ export default function Main() {
                     >
                         <span className="text-lg text-light-purple mb-4 text-center">Things I do when I am not coding.</span>
                         <Link href="/extracurricular" className="mt-auto">
-                            <button className="bg-light-purple text-dark-gray font-bold px-6 py-2 rounded-lg shadow hover:bg-accent transition-colors border-2 border-white">Extracurriculars</button>
+                            <button className="bg-light-purple text-dark-gray font-bold px-6 py-2 rounded-lg shadow hover:bg-accent hover:scale-105 transition-all duration-200 border-2 border-white">Extracurriculars</button>
                         </Link>
                     </motion.div>
                 </div>
@@ -195,8 +208,8 @@ export default function Main() {
 
                 {/* Featured Projects Grid */}
                 <section className="w-full flex flex-col items-center justify-center">
-                    <div className="w-full max-w-6xl mx-auto">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-6">
+                    <div className="w-full max-w-6xl mx-auto px-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-6 place-items-center justify-items-center">
                             {/* First up to 3 projects */}
                             {featuredProjects.slice(0, 3).map((project, idx) => (
                                 <motion.div
@@ -205,10 +218,10 @@ export default function Main() {
                                     whileInView={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 0.35, ease: 'easeOut', delay: 0.2 * idx }}
                                     viewport={{ once: true, amount: 0.6 }}
-                                    className="flex"
+                                    className="flex justify-center w-full"
                                 >
                                     <React.Suspense fallback={<div className="h-48" />}>
-                                        <ProjectBlock project={project} />
+                                        <ProjectBlock project={project} onDetailsClick={handleProjectDetailsClick} />
                                     </React.Suspense>
                                 </motion.div>
                             ))}
@@ -221,10 +234,10 @@ export default function Main() {
                                     whileInView={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 0.35, ease: 'easeOut', delay: 0.07 * idx }}
                                     viewport={{ once: true, amount: 0.6 }}
-                                    className="flex"
+                                    className="flex justify-center w-full"
                                 >
                                     <React.Suspense fallback={<div className="h-48" />}>
-                                        <ProjectBlock project={project} />
+                                        <ProjectBlock project={project} onDetailsClick={handleProjectDetailsClick} />
                                     </React.Suspense>
                                 </motion.div>
                             ))}
@@ -235,7 +248,7 @@ export default function Main() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.35, ease: 'easeOut', delay: 0.21 }}
                                 viewport={{ once: true, amount: 0.6 }}
-                                className="flex items-center justify-center"
+                                className="flex w-full max-w-sm md:max-w-[340px] items-center justify-center"
                             >
                                 <button
                                     className="flex flex-col items-center justify-center bg-linear-to-br from-dark-gray to-light-purple/20 rounded-full border-2 border-dashed border-light-purple text-light-purple shadow-lg p-0 hover:scale-110 transition-transform cursor-pointer w-36 h-36 sm:w-40 sm:h-40 md:w-48 md:h-48"
@@ -261,10 +274,10 @@ export default function Main() {
                 </section>
             </section>
 
-            {/* Experiences*/}
-            <div className="w-full px-4 sm:px-6 md:px-20 lg:px-28">
+            {/* Experiences */}
+            <div className="w-full px-4 sm:px-6 md:px-20 lg:px-28 mt-50">
                 <motion.p
-                    className="text-xl md:text-3xl text-gray-200 text-center max-w-2xl mb-30 mt-50 mx-auto"
+                    className="text-xl md:text-3xl text-gray-200 text-center max-w-2xl mb-8 mt-8 mx-auto"
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2, ease: 'easeOut', delay: 0.4 }}
@@ -272,6 +285,8 @@ export default function Main() {
                 >
                     On the contrary, here are some cool stuff I did when I did have a j*b.
                 </motion.p>
+
+                {/* timeline wrapper: give the timeline a predictable minimum height so it pushes following sections down */}
                 <motion.div
                     initial={{ opacity: 0, y: 60 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -279,13 +294,19 @@ export default function Main() {
                     viewport={{ once: true, amount: 0.5 }}
                     className="flex flex-col items-center justify-center"
                 >
-                    <ExperienceTimeline />
-                    <div className="flex justify-center w-full">
+                    {/* center and constrain width so timeline does not overflow horizontally */}
+                    <div className="w-full max-w-5xl mt-35">
+                        <div className="w-full">
+                            <ExperienceTimeline />
+                        </div>
+                    </div>
+
+                    <div className="flex justify-center w-full mt-20">
                         <button
-                            className="mt-10 px-8 py-3 bg-light-purple text-dark-gray font-bold rounded-lg shadow hover:bg-accent transition-colors border-2 border-white text-lg"
+                            className="px-8 py-3 bg-light-purple text-dark-gray font-bold rounded-lg shadow hover:bg-accent hover:scale-105 transition-all duration-200 border-2 border-white text-lg"
                             onClick={() => window.location.href = '/experiences'}
                         >
-                            Learn the details of my experiences
+                            Learn about all of my experiences
                         </button>
                     </div>
                 </motion.div>
@@ -322,7 +343,7 @@ export default function Main() {
                 </motion.div>
                 <div className="flex justify-center w-full">
                     <button
-                        className="mb-30 mt-8 px-8 py-3 bg-light-purple text-dark-gray font-bold rounded-lg shadow hover:bg-accent transition-colors border-2 border-white text-lg"
+                        className="mb-30 mt-8 px-8 py-3 bg-light-purple text-dark-gray font-bold rounded-lg shadow hover:bg-accent hover:scale-105 transition-all duration-200 border-2 border-white text-lg"
                         onClick={() => window.location.href = '/skills'}
                     >
                         Check all my skills
@@ -352,7 +373,7 @@ export default function Main() {
                 </motion.p>
                 <div className="flex justify-center">
                     <button
-                        className=" mb-25 px-8 py-4 bg-light-purple text-dark-gray font-bold rounded-lg shadow hover:bg-accent transition-colors border-2 border-white text-lg flex items-center gap-3"
+                        className=" mb-25 px-8 py-4 bg-light-purple text-dark-gray font-bold rounded-lg shadow hover:bg-accent hover:scale-105 transition-all duration-200 border-2 border-white text-lg flex items-center gap-3"
                         onClick={() => window.location.href = '/contact'}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
@@ -422,6 +443,13 @@ export default function Main() {
                     </svg>
                 </button>
             )}
+            
+            {/* Project Modal */}
+            <ProjectModal
+                project={selectedProject}
+                isOpen={isModalOpen}
+                onClose={closeModal}
+            />
         </main>
     );
 }

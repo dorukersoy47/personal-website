@@ -46,7 +46,7 @@ export interface Project {
     id: string;
     featured: boolean;
     title: string;
-    type: ProjectType;
+    type: ProjectType[];
     status: ProjectStatus;
     dateDone: Date;
     desc_tech: string;
@@ -62,6 +62,7 @@ export interface Project {
 
 export interface Experience {
     id: string;
+    featured: boolean;
     title: string;
     type: ExperienceType[];
     company: string;

@@ -124,7 +124,7 @@ export default function ContactForm() {
 
     return (
         <div className="bg-dark-gray/70 border-2 border-white/20 rounded-2xl shadow-lg backdrop-blur-lg p-5 sm:p-6 md:p-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-light-purple">Send me a message</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-light-purple">Send me an email</h2>
             <p className="text-gray-300 mt-2">
                 I usually reply within a day. Required fields are marked with <span className="text-accent">*</span>.
             </p>

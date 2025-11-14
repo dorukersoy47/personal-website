@@ -1,6 +1,5 @@
 export const site = {
     email: "dorukersoy2006@gmail.com",
-    resumePath: "/documents/Doruk-Ersoy-Resume.pdf",
     social: {
         github: "https://github.com/dorukersoy47",
         linkedin: "https://linkedin.com/in/doruk-ersoy",
@@ -13,7 +12,7 @@ export const site = {
         { href: "/", label: "Home" },
         { href: "/about", label: "About Me" },
         { href: "/education", label: "Education" },
-        { href: "/extracurricular", label: "Extracurricular" },
+        { href: "/extracurricular", label: "Extracurriculars" },
         { href: "/projects", label: "Projects" },
         { href: "/experience", label: "Experience" },
         { href: "/skills", label: "Skills" },

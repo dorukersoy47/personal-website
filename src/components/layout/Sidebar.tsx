@@ -48,7 +48,7 @@ export default function Sidebar({
                 <div className="flex-grow" />
 
                 {/* Social / Actions */}
-                <div className="grid grid-cols-3 gap-3 place-items-center px-6 py-3">
+                <div className="grid grid-cols-3 gap-3 place-items-center px-6 py-3 mb-10">
 
                     {/* LinkedIn */}
                     <a

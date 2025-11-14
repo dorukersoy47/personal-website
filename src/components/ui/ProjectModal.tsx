@@ -111,10 +111,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                         <div className="flex items-center gap-2">
                             <span className="text-gray-400">Completed:</span>
                             <span className="text-white">
-                                {project.dateDone.toLocaleDateString('en-US', { 
-                                    year: 'numeric', 
-                                    month: 'long' 
-                                })}
+                                {project.dateDone.toLocaleDateString('en-US', {year: 'numeric'})}
                             </span>
                         </div>
                     </div>

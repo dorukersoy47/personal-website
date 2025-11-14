@@ -259,8 +259,8 @@ const projects: Project[] = [
     desc_refl: "The paper focuses on the trade-off between context length and retrieval accuracy. Working on this project expanded my theoretical understanding of RAG systems and their applications in persistent conversational agents.",
     imageSrc: "/images/llm-memory.jpg",
     imageAlt: "LLM Memory Research",
-    demoName: "Paper",
-    demoUrl: "/documents/llm-memory.pdf",
+    demoName: "",
+    demoUrl: "",
     githubUrl: undefined,
     docSrc: "/documents/llm-memory.pdf",
     skillsList: [skillMap.ai, skillMap.ml, skillMap.research]
@@ -276,8 +276,8 @@ const projects: Project[] = [
     desc_refl: "This experience deepened my grasp of ML experimentation and the practical considerations behind deploying analytical systems for business use cases.",
     imageSrc: "/images/ml-retail.jpg",
     imageAlt: "ML for Retail Research",
-    demoName: "Paper",
-    demoUrl: "/documents/ml-retail.pdf",
+    demoName: "",
+    demoUrl: "",
     githubUrl: undefined,
     docSrc: "/documents/ml-retail.pdf",    
     skillsList: [skillMap.ai, skillMap.ml, skillMap.research]
@@ -293,8 +293,8 @@ const projects: Project[] = [
     desc_refl: "This research provided deep insights into noise functions, parameter tuning, and terrain morphology. The process helped me connect theoretical algorithm design with tangible gameplay outcomes, reinforcing how math and creativity intertwine in level generation.",
     imageSrc: "/images/pcg-research.jpg",
     imageAlt: "PCG Research",
-    demoName: "Paper",
-    demoUrl: "/documents/cs-ee.pdf",
+    demoName: "",
+    demoUrl: "",
     githubUrl: undefined,
     docSrc: "/documents/cs-ee.pdf",
     skillsList: [skillMap.unity, skillMap.csharp, skillMap.python, skillMap.research]

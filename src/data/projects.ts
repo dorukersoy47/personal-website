@@ -225,8 +225,8 @@ const projects: Project[] = [
     desc_refl: "I documented findings in an internal report shared with IBM's development team, whose engineers appreciated my data collection and reproducibility methods. The project deepened my understanding of multilingual LLMs, evaluation metrics, and model benchmarking methodology.",
     imageSrc: "/images/ibm-watsonx-benchmark.jpg",
     imageAlt: "IBM Watsonx Benchmark",
-    demoName: "GitHub",
-    demoUrl: "https://github.com/dorukersoy47/watsonx-turkish-benchmark",
+    demoName: "",
+    demoUrl: "",
     githubUrl: "https://github.com/dorukersoy47/watsonx-turkish-benchmark",
     docSrc: undefined,
     skillsList: [skillMap.watsonx, skillMap.python, skillMap.git, skillMap.projectmanagement]
@@ -350,10 +350,6 @@ const projects: Project[] = [
     docSrc: undefined,
     skillsList: [skillMap.csharp, skillMap.matplotlib, skillMap.unity, skillMap.git, skillMap.collaboration, skillMap.teamwork, skillMap.communication, skillMap.timemanagement, skillMap.projectmanagement]
   },
-
-  // ────────────────────────────────
-  //  ELECTRONICS AND SYSTEMS PROJECTS
-  // ────────────────────────────────
   {
     id: "pathfinding-robot",
     featured: false,

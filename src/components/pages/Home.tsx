@@ -7,6 +7,7 @@ import SkillsMarquee from "../ui/SkillsMarquee";
 import ExperienceTimeline from "../ui/ExperienceTimeline";
 import ProjectBlock from "../ui/ProjectBlock";
 import ProjectModal from "../ui/ProjectModal";
+import { useModal } from "../../contexts/ModalContext";
 
 const featuredProjects = projects.filter(project => project.featured);
 
@@ -14,7 +15,8 @@ export default function Main() {
     const [showScrollDown, setShowScrollDown] = useState(true);
     const [showScrollUp, setShowScrollUp] = useState(false);
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isClient, setIsClient] = useState(false);
+    const { isModalOpen, setIsModalOpen } = useModal();
 
     const handleProjectDetailsClick = (project: Project) => {
         setSelectedProject(project);
@@ -24,9 +26,16 @@ export default function Main() {
     const closeModal = () => {
         setIsModalOpen(false);
         setSelectedProject(null);
+        // Force scroll restoration as a safety measure
+        if (typeof document !== 'undefined') {
+            document.body.style.overflow = '';
+        }
     };
 
     useEffect(() => {
+        // Set client flag to true after hydration
+        setIsClient(true);
+        
         const handleScroll = () => {
             const scrollY = window.scrollY;
             const windowHeight = window.innerHeight;
@@ -39,7 +48,15 @@ export default function Main() {
 
         handleScroll(); // initialize once on mount
         window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
+        
+        // Cleanup function
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            // Ensure body overflow is reset when component unmounts
+            if (typeof document !== 'undefined') {
+                document.body.style.overflow = '';
+            }
+        };
     }, []);
 
     const scrollToTop = () => {
@@ -208,8 +225,8 @@ export default function Main() {
 
                 {/* Featured Projects Grid */}
                 <section className="w-full flex flex-col items-center justify-center">
-                    <div className="w-full max-w-6xl mx-auto px-4">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-6 place-items-center justify-items-center">
+                    <div className="w-full max-w-4xl mx-auto px-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-6 place-items-center justify-items-center">
                             {/* First up to 3 projects */}
                             {featuredProjects.slice(0, 3).map((project, idx) => (
                                 <motion.div
@@ -217,22 +234,6 @@ export default function Main() {
                                     initial={{ opacity: 0, x: -80 }}
                                     whileInView={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 0.35, ease: 'easeOut', delay: 0.2 * idx }}
-                                    viewport={{ once: true, amount: 0.6 }}
-                                    className="flex justify-center w-full"
-                                >
-                                    <React.Suspense fallback={<div className="h-48" />}>
-                                        <ProjectBlock project={project} onDetailsClick={handleProjectDetailsClick} />
-                                    </React.Suspense>
-                                </motion.div>
-                            ))}
-
-                            {/* Next up to 2 projects */}
-                            {featuredProjects.slice(3, 5).map((project, idx) => (
-                                <motion.div
-                                    key={project.id}
-                                    initial={{ opacity: 0, x: 80 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.35, ease: 'easeOut', delay: 0.07 * idx }}
                                     viewport={{ once: true, amount: 0.6 }}
                                     className="flex justify-center w-full"
                                 >
@@ -387,7 +388,7 @@ export default function Main() {
             { /* UI Helpers */ }
 
             {/* Non-interactive Scroll Down Indicator */}
-            {showScrollDown && (
+            {isClient && showScrollDown && (
                 <motion.div
                     role="presentation"
                     aria-hidden="true"
@@ -415,7 +416,7 @@ export default function Main() {
             )}
 
             {/* Scroll Up Button */}
-            {showScrollUp && (
+            {isClient && showScrollUp && (
                 <button
                     onClick={scrollToTop}
                     className="

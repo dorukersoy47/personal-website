@@ -24,9 +24,8 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
     };
 
     React.useEffect(() => {
-        if (isOpen) {
-            // Store the original overflow value
-            const originalOverflow = document.body.style.overflow;
+        if (isOpen && typeof document !== 'undefined') {
+            // Prevent scroll on body
             document.body.style.overflow = 'hidden';
             
             // Add escape key listener
@@ -38,12 +37,21 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
             
             document.addEventListener('keydown', handleEscape);
             
-            // Cleanup function that properly restores the original overflow
+            // Cleanup function
             return () => {
-                document.body.style.overflow = originalOverflow || '';
+                if (typeof document !== 'undefined') {
+                    document.body.style.overflow = '';
+                }
                 document.removeEventListener('keydown', handleEscape);
             };
         }
+        
+        // Ensure cleanup when modal closes
+        return () => {
+            if (typeof document !== 'undefined') {
+                document.body.style.overflow = '';
+            }
+        };
     }, [isOpen, onClose]);
 
     return (
@@ -59,7 +67,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                             {project.title}
                         </h2>
                         <span className="inline-block px-3 py-1 text-accent text-sm font-semibold bg-accent/10 rounded-full">
-                            {project.type}
+                            {Array.isArray(project.type) ? project.type.join(' & ') : project.type}
                         </span>
                     </div>
                     <button
@@ -128,53 +136,56 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                         <div>
                             <h3 className="text-xl font-semibold text-light-purple mb-3">Technologies & Skills</h3>
                             <div className="flex flex-wrap gap-2">
-                                {project.skillsList.map((skill) => (
-                                    <span
-                                        key={skill.id}
-                                        className="px-3 py-1 bg-light-purple/20 text-light-purple text-sm rounded-full border border-light-purple/30"
-                                    >
-                                        {skill.name}
-                                    </span>
-                                ))}
+                                {project.skillsList
+                                    .filter(skill => skill && skill.name) // Filter out null/undefined skills
+                                    .map((skill, index) => (
+                                        <span
+                                            key={`${skill.id || skill.name}-${index}`} // More unique key with index
+                                            className="px-3 py-1 bg-light-purple/20 text-light-purple text-sm rounded-full border border-light-purple/30"
+                                        >
+                                            {skill.name}
+                                        </span>
+                                    ))}
                             </div>
                         </div>
                     )}
 
                     {/* Action Buttons */}
-                    <div className="flex flex-wrap gap-3 pt-4 border-t border-white/10">
-                        {project.demoName && project.demoUrl && (
+                    <div className="pt-4 border-t border-white/10">
+                        {/* Research project - only paper */}
+                        {project.docSrc && !project.demoUrl && !project.githubUrl && (
                             <a
-                                href={project.demoUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                href={project.docSrc}
+                                download
                                 onClick={stop}
-                                className="inline-block"
+                                className="inline-block w-full"
                             >
                                 <button
                                     type="button"
-                                    className="px-6 py-3 bg-light-purple text-dark-gray font-bold rounded-lg shadow border-2 border-white
+                                    className="w-full px-6 py-3 bg-light-purple text-dark-gray font-bold rounded-lg shadow border-2 border-white
                                                transition-transform duration-200 ease-out transform-gpu
                                                hover:-translate-y-0.5 hover:scale-[1.02]
                                                active:translate-y-0 active:scale-[0.98]"
                                 >
-                                    {project.demoName}
+                                    Paper
                                 </button>
                             </a>
                         )}
 
-                        {project.githubUrl && (
+                        {/* Only GitHub available */}
+                        {project.githubUrl && !project.demoUrl && !project.docSrc && (
                             <a
                                 href={project.githubUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={stop}
-                                className="inline-block"
+                                className="inline-block w-full"
                             >
                                 <button
                                     type="button"
-                                    className="px-6 py-3 bg-dark-gray text-light-purple font-bold rounded-lg shadow border-2 border-light-purple
+                                    className="w-full px-6 py-3 bg-light-purple text-dark-gray font-bold rounded-lg shadow border-2 border-white
                                                transition-transform duration-200 ease-out transform-gpu
-                                               hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-accent hover:text-dark-gray
+                                               hover:-translate-y-0.5 hover:scale-[1.02]
                                                active:translate-y-0 active:scale-[0.98]"
                                 >
                                     GitHub
@@ -182,23 +193,111 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                             </a>
                         )}
 
-                        {project.docSrc && (
-                            <a
-                                href={project.docSrc}
-                                download
-                                onClick={stop}
-                                className="inline-block"
-                            >
-                                <button
-                                    type="button"
-                                    className="px-6 py-3 bg-dark-gray text-light-purple font-bold rounded-lg shadow border-2 border-light-purple
-                                               transition-transform duration-200 ease-out transform-gpu
-                                               hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-accent hover:text-dark-gray
-                                               active:translate-y-0 active:scale-[0.98]"
+                        {/* Demo and GitHub (most common combination) */}
+                        {project.demoName && project.demoUrl && project.githubUrl && (
+                            <div className="flex gap-3">
+                                <a
+                                    href={project.demoUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={stop}
+                                    className="flex-1"
                                 >
-                                    Paper
-                                </button>
-                            </a>
+                                    <button
+                                        type="button"
+                                        className="w-full px-6 py-3 bg-light-purple text-dark-gray font-bold rounded-lg shadow border-2 border-white
+                                                   transition-transform duration-200 ease-out transform-gpu
+                                                   hover:-translate-y-0.5 hover:scale-[1.02]
+                                                   active:translate-y-0 active:scale-[0.98]"
+                                    >
+                                        {project.demoName}
+                                    </button>
+                                </a>
+                                <a
+                                    href={project.githubUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={stop}
+                                    className="flex-1"
+                                >
+                                    <button
+                                        type="button"
+                                        className="w-full px-6 py-3 bg-dark-gray text-light-purple font-bold rounded-lg shadow border-2 border-light-purple
+                                                   transition-transform duration-200 ease-out transform-gpu
+                                                   hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-accent hover:text-dark-gray
+                                                   active:translate-y-0 active:scale-[0.98]"
+                                    >
+                                        GitHub
+                                    </button>
+                                </a>
+                            </div>
+                        )}
+
+                        {/* Other combinations - fallback to flexible layout */}
+                        {((project.demoUrl && project.demoName) || project.githubUrl || project.docSrc) && 
+                         !((project.docSrc && !project.demoUrl && !project.githubUrl) ||
+                           (project.githubUrl && !project.demoUrl && !project.docSrc) ||
+                           (project.demoName && project.demoUrl && project.githubUrl)) && (
+                            <div className="flex flex-wrap gap-3">
+                                {project.demoName && project.demoUrl && (
+                                    <a
+                                        href={project.demoUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={stop}
+                                        className="inline-block"
+                                    >
+                                        <button
+                                            type="button"
+                                            className="px-6 py-3 bg-light-purple text-dark-gray font-bold rounded-lg shadow border-2 border-white
+                                                       transition-transform duration-200 ease-out transform-gpu
+                                                       hover:-translate-y-0.5 hover:scale-[1.02]
+                                                       active:translate-y-0 active:scale-[0.98]"
+                                        >
+                                            {project.demoName}
+                                        </button>
+                                    </a>
+                                )}
+
+                                {project.githubUrl && (
+                                    <a
+                                        href={project.githubUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={stop}
+                                        className="inline-block"
+                                    >
+                                        <button
+                                            type="button"
+                                            className="px-6 py-3 bg-dark-gray text-light-purple font-bold rounded-lg shadow border-2 border-light-purple
+                                                       transition-transform duration-200 ease-out transform-gpu
+                                                       hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-accent hover:text-dark-gray
+                                                       active:translate-y-0 active:scale-[0.98]"
+                                        >
+                                            GitHub
+                                        </button>
+                                    </a>
+                                )}
+
+                                {project.docSrc && (
+                                    <a
+                                        href={project.docSrc}
+                                        download
+                                        onClick={stop}
+                                        className="inline-block"
+                                    >
+                                        <button
+                                            type="button"
+                                            className="px-6 py-3 bg-dark-gray text-light-purple font-bold rounded-lg shadow border-2 border-light-purple
+                                                       transition-transform duration-200 ease-out transform-gpu
+                                                       hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-accent hover:text-dark-gray
+                                                       active:translate-y-0 active:scale-[0.98]"
+                                        >
+                                            Paper
+                                        </button>
+                                    </a>
+                                )}
+                            </div>
                         )}
                     </div>
                 </div>

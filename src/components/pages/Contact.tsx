@@ -33,10 +33,10 @@ export default function Contact() {
             </section>
 
             {/* Social Links Section */}
-            <section className="w-full px-4 sm:px-6 md:px-20 lg:px-28 pb-12">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+            <section className="w-full px-4 sm:px-6 md:px-20 lg:px-28 pb-12 flex justify-center">
+                <div className="w-full max-w-4xl">
                     <motion.div
-                        className="lg:col-span-2 mx-auto w-full max-w-2xl"
+                        className="mx-auto w-full max-w-2xl"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
@@ -167,11 +167,11 @@ export default function Contact() {
             </section>
 
             {/* Content */}
-            <section className="w-full px-4 sm:px-6 md:px-20 lg:px-28 pb-24">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+            <section className="w-full px-4 sm:px-6 md:px-20 lg:px-28 pb-24 flex justify-center">
+                <div className="w-full max-w-4xl">
                     {/* Form (simple enter animation; no whileInView) */}
                     <motion.div
-                        className="lg:col-span-2 mx-auto w-full max-w-2xl"
+                        className="mx-auto w-full max-w-2xl"
                         initial={{ opacity: 0, x: 30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, ease: "easeOut", delay: 0.4 }}

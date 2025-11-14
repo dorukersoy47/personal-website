@@ -28,8 +28,9 @@ export default function SkillsMarquee() {
   // Flatten all skills from all categories except 'Learning' and 'Soft Skills' into a single array
   const allSkills = useMemo(() => {
     return skillCategories
-      .filter(cat => cat.category !== "Learning" && cat.category !== "Soft Skills")
-      .flatMap(cat => cat.skills);
+      .filter(cat => cat && cat.category !== "Learning" && cat.category !== "Soft Skills")
+      .flatMap(cat => cat.skills || [])
+      .filter(skill => skill && skill.name); // Filter out invalid skills
   }, []);
 
   // No shuffle: use original order for SSR/hydration safety
@@ -76,10 +77,12 @@ export default function SkillsMarquee() {
             {[...lines[i], ...lines[i]].map((skill, idx) => {
               // All skills are Skill objects with name and iconName
               const label = skill.name;
-              // For icon, you may want to use a dynamic icon component, but fallback to iconName as alt text
+              // Create a unique key using line index, skill id, and array index
+              const uniqueKey = `line-${i}-skill-${skill.id || skill.name}-idx-${idx}`;
+              
               return (
                 <span
-                  key={idx}
+                  key={uniqueKey}
                   className="inline-flex items-center gap-2 px-4 py-1 rounded bg-dark-gray/60 border border-light-purple/30 mx-1"
                 >
                   <span className="w-6 h-6 flex items-center justify-center">

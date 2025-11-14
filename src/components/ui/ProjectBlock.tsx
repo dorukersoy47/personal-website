@@ -49,7 +49,7 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({ project, onDetailsClick }) 
                     {project.title}
                 </h3>
                 <span className="block text-accent text-xs sm:text-sm font-semibold mt-1 mb-3">
-                    {project.type}
+                    {Array.isArray(project.type) ? project.type.join(' & ') : project.type}
                 </span>
 
                 <div className="flex-1" />

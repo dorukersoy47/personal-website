@@ -21,12 +21,12 @@ export default function ExperienceTimeline() {
     };
 
     // Calculate mobile positions to prevent overlap
-    const getMobileTop = (idx: number) => {
-        // On mobile, space items more evenly and add extra spacing
-        const baseSpacing = 120; // pixels between items
-        const topOffset = 20; // initial offset from top
-        return `${topOffset + (idx * baseSpacing)}px`;
-    };
+    // const getMobileTop = (idx: number) => {
+    //     // On mobile, space items more evenly and add extra spacing
+    //     const baseSpacing = 120; // pixels between items
+    //     const topOffset = 20; // initial offset from top
+    //     return `${topOffset + (idx * baseSpacing)}px`;
+    // };
     return (
         <section className="w-full flex flex-col items-center my-[6vh]">
             {/* Mobile Layout: Simple vertical stack */}

@@ -11,18 +11,6 @@ interface ProjectModalProps {
 }
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose }) => {
-    if (!isOpen || !project) return null;
-
-    const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (e.target === e.currentTarget) {
-            onClose();
-        }
-    };
-
-    const stop = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
-        e.stopPropagation();
-    };
-
     React.useEffect(() => {
         if (isOpen && typeof document !== 'undefined') {
             // Prevent scroll on body
@@ -53,6 +41,18 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
             }
         };
     }, [isOpen, onClose]);
+
+    if (!isOpen || !project) return null;
+
+    const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (e.target === e.currentTarget) {
+            onClose();
+        }
+    };
+
+    const stop = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
+        e.stopPropagation();
+    };
 
     return (
         <div

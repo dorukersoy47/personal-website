@@ -2,7 +2,6 @@
 
 import React, { useState, useMemo } from "react";
 import { skills } from "../../data/skills";
-import type { Skill, SkillCategory } from "../../data/types";
 import * as FaIcons from "react-icons/fa";
 import * as SiIcons from "react-icons/si";
 import * as PiIcons from "react-icons/pi";
@@ -55,22 +54,6 @@ export default function Skills() {
                 return "text-green-400";
             default:
                 return "text-white";
-        }
-    };
-
-    // Get proficiency color based on level
-    const getProficiencyColor = (proficiency: string) => {
-        switch (proficiency) {
-            case "Expert":
-                return "bg-red-500/20 text-red-400 border-red-500/30";
-            case "Advanced":
-                return "bg-amber-600/20 text-amber-400 border-amber-600/30";
-            case "Intermediate":
-                return "bg-yellow-500/20 text-yellow-400 border-yellow-500/30";
-            case "Beginner":
-                return "bg-green-500/20 text-green-400 border-green-500/30";
-            default:
-                return "bg-gray-500/20 text-gray-400 border-gray-500/30";
         }
     };
 

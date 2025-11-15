@@ -1,5 +1,5 @@
 // Education data and utility functions
-import type { Education, Certificate, EducationType } from "./types";
+import type { Education, Certificate } from "./types";
 
 // Education entries
 const educationEntries: Education[] = [

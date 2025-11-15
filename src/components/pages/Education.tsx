@@ -2,7 +2,7 @@
 
 import React from "react";
 import { getEducation, getCertificates } from "../../data/education";
-import type { Education, Certificate } from "../../data/types";
+import type { Education } from "../../data/types";
 
 export default function Education() {
     const educationEntries = getEducation();

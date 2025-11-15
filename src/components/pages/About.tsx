@@ -27,7 +27,7 @@ export default function About() {
 
                     {/* Places I've Lived Section */}
                     <section>
-                        <h2 className="text-2xl md:text-3xl font-bold text-light-purple mb-6">Places I've lived</h2>
+                        <h2 className="text-2xl md:text-3xl font-bold text-light-purple mb-6">Places I&apos;ve lived</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                             {/* Istanbul */}

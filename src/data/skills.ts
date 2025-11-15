@@ -36,7 +36,7 @@ const skills: SkillCategory[] = [
     {
         category: "Tools",
         skills: [
-            { id: "git", name: "Git", level: 8, proficiency: "Expert", iconName: "SiGit" },
+            { id: "git", name: "Git", level: 8, proficiency: "Advanced", iconName: "SiGit" },
             { id: "mongodb", name: "MongoDB", level: 3, proficiency: "Intermediate", iconName: "SiMongodb" },
             { id: "visualstudio", name: "Visual Studio", level: 4, proficiency: "Advanced", iconName: "BiLogoVisualStudio" },
             { id: "figma", name: "Figma", level: 3, proficiency: "Intermediate", iconName: "FaFigma" },
@@ -51,8 +51,8 @@ const skills: SkillCategory[] = [
         skills: [
             { id: "watsonx", name: "IBM Watsonx API", level: 4, proficiency: "Beginner", iconName: "GiArtificialIntelligence"},
             { id: "ibmgranite", name: "IBM Granite", level: 2, proficiency: "Beginner", iconName: "GiArtificialIntelligence" },
-            { id: "ai", name: "Artificial Intelligence", level: 0, proficiency: "Beginner", iconName: "GiArtificialHive" },
-            { id: "ml", name: "Machine Learning", level: 0, proficiency: "Beginner", iconName: "GiArtificialHive" },
+            { id: "ai", name: "Artificial Intelligence", level: 1, proficiency: "Beginner", iconName: "GiArtificialHive" },
+            { id: "ml", name: "Machine Learning", level: 1, proficiency: "Beginner", iconName: "GiArtificialHive" },
         ]
     },
     { 
@@ -70,8 +70,6 @@ const skills: SkillCategory[] = [
             { id: "oop", name: "Object-Oriented Programming", level: 8, proficiency: "Advanced", iconName: "FaUniversity"},
             { id: "dsa", name: "Data Structures and Algorithms", level: 7, proficiency: "Advanced", iconName: "FaUniversity"},
             { id: "logic", name: "Logic", level: 6, proficiency: "Advanced", iconName: "FaUniversity"},
-            { id: "ai", name: "Artificial Intelligence", level: 3, proficiency: "Intermediate", iconName: "FaUniversity"},
-            { id: "ml", name: "Machine Learning", level: 1, proficiency: "Beginner", iconName: "FaUniversity"},
         ]
     },
     {

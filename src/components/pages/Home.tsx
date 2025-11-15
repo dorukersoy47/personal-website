@@ -305,7 +305,7 @@ export default function Main() {
                     <div className="flex justify-center w-full mt-20">
                         <button
                             className="px-8 py-3 bg-light-purple text-dark-gray font-bold rounded-lg shadow hover:bg-accent hover:scale-105 transition-all duration-200 border-2 border-white text-lg"
-                            onClick={() => window.location.href = '/experiences'}
+                            onClick={() => window.location.href = '/experience'}
                         >
                             Learn about all of my experiences
                         </button>

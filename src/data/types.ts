@@ -22,6 +22,13 @@ export type ExperienceType =
     | "Leadership"
     | "Volunteering";
 
+export type EducationType = 
+    | "University"
+    | "High School"
+    | "Certificate"
+    | "Online Course"
+    | "Other";
+
 export type ProficiencyLevel = 
     | "Interested"
     | "Beginner" 
@@ -74,4 +81,28 @@ export interface Experience {
     desc_refl: string;
     projectsList: Project[];
     skillsList?: Skill[];
+}
+
+export interface Education {
+    id: string;
+    featured: boolean;
+    institution: string;
+    degree: string;
+    type: EducationType;
+    location: string;
+    dateStarted: Date;
+    dateEnded?: Date;
+    period: string;
+    description: string;
+    grade?: string | number;
+    extracurriculars?: string[];
+}
+
+export interface Certificate {
+    id: string;
+    name: string;
+    issuer: string;
+    completionYear: number;
+    description: string;
+    credentialUrl?: string;
 }

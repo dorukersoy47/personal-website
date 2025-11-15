@@ -54,7 +54,7 @@ const projects: Project[] = [
     imageSrc: "/images/lighthouse.jpg",
     imageAlt: "Lighthouse AI productivity analytics dashboard",
     demoName: "Website",
-    demoUrl: "thouse-py-studio.lovable.app",
+    demoUrl: "https://lighthouse-py-studio.lovable.app/",
     githubUrl: "https://github.com/dorukersoy47/burnout-detector",
     docSrc: undefined,
     skillsList: [skillMap.python, skillMap.mediapipe, skillMap.openai, skillMap.ai, skillMap.git, skillMap.projectmanagement, skillMap.projectmanagement, skillMap.teamwork, skillMap.collaboration]

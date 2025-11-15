@@ -61,7 +61,7 @@ export default function Projects() {
 
     return (
         <div className="min-h-screen pt-20 px-8">
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 <div className="mb-8">
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Projects</h1>
